@@ -1,0 +1,18 @@
+{
+    "name": "uni_template",
+    "version": "1.0.2",
+    "description": "项目开发基础模版（Vue3），集成 --> 常用组件库，网络请求 Promise 风格，WebSocket 消息收发、心跳、重连，CSS 变量主题方案，自定义全局 Loading，各端实用工具函数",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "项目模版",
+        "开发模版",
+        "Vue3模版"
+    ],
+    "author": "Xingfei Xu <1824159241@qq.com>",
+    "license": "MIT",
+    "id": "x-template",
+    "displayName": "项目开发基础模版（Vue3）"
+}

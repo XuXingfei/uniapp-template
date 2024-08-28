@@ -1,0 +1,173 @@
+/* flex 布局 */
+.f-wp {
+    flex-wrap: wrap !important;
+}
+
+.f-ac {
+    align-items: center !important;
+}
+
+.f-jc {
+    justify-content: center !important;
+}
+
+.f-sb {
+    justify-content: space-between !important;
+}
+
+.f-sa {
+    justify-content: space-around !important;
+}
+
+.f-left {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+.f-right {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+.f-top {
+    margin-top: 0 !important;
+    margin-bottom: auto !important;
+}
+
+.f-bottom {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+}
+
+.f-1 {
+    flex: 1 !important;
+}
+
+.f-2 {
+    flex: 2 !important;
+}
+
+.f-3 {
+    flex: 3 !important;
+}
+
+.f-4 {
+    flex: 4 !important;
+}
+
+.f-5 {
+    flex: 5 !important;
+}
+
+/* row排列 */
+.f-r {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.f-r-re {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+}
+
+.f-r-sb {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+}
+
+.f-r-sa {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+}
+
+.f-r-y-c {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.f-r-x-c {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+}
+
+.f-r-y-c-sb {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.f-r-y-c-sa {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+}
+
+.f-r-xy-c {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* column 排列 */
+.f-c {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.f-c-re {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+}
+
+.f-c-sb {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.f-c-sa {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-around !important;
+}
+
+
+.f-c-y-c {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.f-c-x-c {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.f-c-x-c-sb {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.f-c-x-c-sa {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+}
+
+.f-c-xy-c {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

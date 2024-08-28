@@ -1,0 +1,86 @@
+{
+    "pages": [{
+        "path": "pagesMain/home",
+        "style": {
+            "navigationBarTitleText": ""
+        }
+    }, {
+        "path": "pagesMain/user",
+        "style": {
+            "navigationBarTitleText": ""
+        }
+    }],
+    "subPackages": [{
+        "root": "pages",
+        "pages": [{
+                "path": "login",
+                "style": {
+                    "navigationBarTitleText": ""
+                }
+            },
+            {
+                "path": "register",
+                "style": {
+                    "navigationBarTitleText": ""
+                }
+            },
+            {
+                "path": "forgotPwd",
+                "style": {
+                    "navigationBarTitleText": ""
+                }
+            },
+            {
+                "path": "protocol",
+                "style": {
+                    "navigationBarTitleText": ""
+                }
+            },
+            {
+                "path": "setting",
+                "style": {
+                    "navigationBarTitleText": ""
+                }
+            }
+        ]
+    }],
+    "preloadRule": {
+        "pagesMain/home": {
+            "network": "all",
+            "packages": ["pages"]
+        }
+    },
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "MOTTO",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8",
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "pullToRefresh": {
+            "color": "#87ceeb"
+        }
+    },
+    "tabBar": {
+        "color": "#4D4D4D",
+        "selectedColor": "#4D4D4D",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "iconWidth": "22px",
+        "fontSize": "12px",
+        "list": [{
+                "pagePath": "pagesMain/home",
+                "text": "首页",
+                "iconPath": "static/tabIcon/home.png",
+                "selectedIconPath": "static/tabIcon/home.png"
+            },
+            {
+                "pagePath": "pagesMain/user",
+                "text": "我的",
+                "iconPath": "static/tabIcon/me.png",
+                "selectedIconPath": "static/tabIcon/me.png"
+            }
+        ]
+    },
+    "uniIdRouter": {}
+}

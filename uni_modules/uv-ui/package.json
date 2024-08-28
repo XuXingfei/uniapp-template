@@ -1,0 +1,22 @@
+{
+	"name": "@climblee/uv-ui",
+	"version": "1.1.20",
+	"description": "uv-ui 破釜沉舟之兼容vue3+2、nvue、app、h5、小程序等多端基于uni-app和uView2.x的生态框架，支持单独导入，开箱即用，利剑出击。",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"keywords": [
+		"uv-ui",
+		"uvui",
+		"uni-app 框架",
+		"uv_UI",
+		"uv UI"
+	],
+	"author": "climblee",
+	"license": "ISC"
+}

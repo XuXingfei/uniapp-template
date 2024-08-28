@@ -1,0 +1,22 @@
+page,
+view,
+button,
+input,
+textarea,
+scroll-view {
+    box-sizing: border-box;
+}
+
+image {
+    vertical-align: bottom;
+}
+
+/* 隐藏scroll-view里面自带的滚动条 */
+::-webkit-scrollbar {
+    display: block;
+    width: 0 !important;
+    height: 0 !important;
+    -webkit-appearance: auto !important;
+    background: transparent;
+    overflow: auto !important;
+}
