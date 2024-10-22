@@ -1,5 +1,5 @@
 <template>
-    <view :style="[innerStyle, themeStyle, customStyle]">
+    <view :class="customClass" :style="[innerStyle, themeStyle, customStyle]">
         <slot></slot>
     </view>
 </template>
@@ -14,14 +14,25 @@
             customStyle: {
                 type: Object
             },
+            customClass: {
+                type: String,
+                default: ''
+            },
         },
         computed: {
             innerStyle() {
-                const { statusBarHeight, safeAreaInsets } = uni.getSystemInfoSync()
+                // #ifdef MP
+                const menuRect = uni.getMenuButtonBoundingClientRect()
+                // #endif
+                const { statusBarHeight, safeAreaInsets, screenWidth } = uni.getSystemInfoSync()
                 return {
                     '--x-status-bar-height': statusBarHeight + 'px',
                     '--x-safe-top': safeAreaInsets.top + 'px',
                     '--x-safe-bottom': safeAreaInsets.bottom + 'px',
+                    // #ifdef MP
+                    '--x-safe-top': menuRect.bottom + 'px',
+                    '--x-safe-right': screenWidth - menuRect.left + 'px',
+                    // #endif
                 }
             }
         },

@@ -1,39 +1,61 @@
-import { ref, watch, isReactive } from 'vue'
-import { onLoad, onShow } from '@dcloudio/uni-app'
+import { ref, watch, isReactive, onMounted } from 'vue'
 import { http } from '@/common/network/http.js'
 
-export const useRequest = function(requestMethod, url, params = {}, initValue = {}, loadGet = true, showGet = true, autoGet = true) {
 
-    const data = ref(initValue)
+/**
+ * @Func useRequest
+ * @Desc 网络请求
+ * @param {String} method 请求方式(get | post)
+ * @param {String} url 请求路径
+ * @return {Object} { 
+        data: 响应数据
+        getData: 获取数据
+        dataUpdated: 注册数据改变回调
+    }
+ * @Author Xingfei Xu
+ * @Email 1824159241@qq.com
+ */
+export const useRequest = function(
+    method,
+    url,
+    params = {},
+    initValue = {},
+    mountedGet = true,
+    autoGet = true
+) {
+    const data = ref(initValue);
 
-    async function getData() {
+    let update
+
+    const dataUpdated = fun => update = fun
+
+    async function getData(type = 'default') {
         try {
-            const res = await requestMethod(url, params)
-            data.value = res
-            return res
+            const res = await http[method](url, params);
+            data.value = res;
+            if (typeof update == 'function') update(res, type)
+            return res;
         } catch (error) {
-            return Promise.reject(error)
+            return Promise.reject(error);
         }
     }
 
+    let timer;
+
     if (autoGet && isReactive(params)) {
-        watch(params, getData)
+        watch(params, () => {
+            timer && clearTimeout(timer);
+            timer = setTimeout(() => getData('watch'), 500);
+        });
     }
 
-    if (loadGet && !showGet) {
-        onLoad(getData)
-    }
-
-    if (showGet) {
-        onShow(getData)
+    if (mountedGet) {
+        onMounted(() => getData('mounted'));
     }
 
     return {
         data,
-        getData
-    }
-}
-
-export const useGet = (...args) => useRequest(http.get, ...args)
-
-export const usePost = (...args) => useRequest(http.post, ...args)
+        getData,
+        dataUpdated
+    };
+};

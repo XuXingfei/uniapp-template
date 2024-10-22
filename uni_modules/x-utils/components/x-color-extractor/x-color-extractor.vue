@@ -1,8 +1,8 @@
 <template>
     <view class="x-color-extractor">
-        <view class="canvas-container" :style="[{width, height},customStyle]">
+        <view class="color-extractor-view" :style="[{width, height},customStyle]">
             <canvas :style="{width, height, transform: `translateX(${offsetCorrection})`}" @touchend="touchend" id="colorCanvas" canvas-id="colorCanvas"></canvas>
-            <view v-if="circleShow" :style="{left: left + 'px', top: top + 'px'}" class="circle"></view>
+            <view v-if="circleShow" :style="{left: left + 'px', top: top + 'px'}" class="color-extractor-circle"></view>
         </view>
     </view>
 </template>
@@ -99,11 +99,11 @@
     .x-color-extractor {
         // background: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF, #0000FF, #8B00FF, #FF0000);
 
-        .canvas-container {
+        .color-extractor-view {
             background-color: skyblue;
             position: relative;
 
-            .circle {
+            .color-extractor-circle {
                 position: absolute;
                 width: 18px;
                 height: 18px;

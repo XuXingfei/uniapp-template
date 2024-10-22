@@ -108,10 +108,11 @@ export const $object2queryStr = (obj) => {
     }, '?').slice(0, -1)
 }
 
-export const $getCurrentPagePath = () => {
+export const $getCurrentPagePath = (fullPath = false) => {
     const pages = getCurrentPages()
-    if (!pages.length) return ''
-    return '/' + pages[pages.length - 1].route
+    if (pages.length === 0) return ''
+    const { route, $page } = pages[pages.length - 1]
+    return fullPath ? $page.fullPath : '/' + route
 }
 
 export const $html2text = (html) => {

@@ -11,7 +11,7 @@
                 </x-navbar>
             </x-fade-in-top>
 
-            <text style="font-size: 40rpx; font-weight: bold; margin-bottom: 20rpx;">常用组件</text>
+            <text class="fs-40 bold mb-20">常用组件</text>
 
             <text class="title">金额</text>
             <x-amount :amount="20" scale="1.5" color="red"></x-amount>
@@ -32,7 +32,7 @@
             <text class="title">上传图片（需在 common/config.js 文件设置正确的请求信息）</text>
             <my-upload-image :width="702" v-model:imgs="imgs"></my-upload-image>
 
-            <view class="" v-for="i in 50">
+            <view class="mt-32 p-20" v-for="i in 50">
                 {{ i }}
             </view>
 

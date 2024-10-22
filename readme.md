@@ -15,7 +15,7 @@ root/
 │
 ├─common                # 公共 js 文件目录
 │  ├─api                # 接口 api 目录
-│  ├─network            # 网络请求和 WebSokket 目录
+│  ├─network            # 网络请求和 WebSocket 目录
 │  ├─utils              # 工具函数目录
 │  ├─config.js          # 项目配置信息文件
 │  └─themeStyle.js      # 项目主题样式文件（样式使用示例: color: var(--theme-color);）
@@ -31,7 +31,8 @@ root/
 │  ├─login.vue          # 登录页面
 │  ├─protocol.vue       # 富文本协议页面
 │  ├─register.vue       # 注册页面
-│  └─setting.vue        # 设置页面（切换主题色）
+│  ├─setting.vue        # 设置页面（切换主题色）
+│  └─webview.vue        # 打开外部链接
 ├─pagesMain             # 启动页和Tabbar页面存放的目录（主包）--- 建议除启动页和Tabbar页面其他页面都放到分包方便小程序发布
 │  ├─home.vue           # 首页/启动页
 │  └─user.vue           # 我的页面
@@ -62,9 +63,6 @@ root/
 ├─readme.md             # 项目介绍
 └─uni.scss              # 内置的常用样式变量
 ```
-
-### 插件如果对你有帮助给个好评吧~
-
 
 
 

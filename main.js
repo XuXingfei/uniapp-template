@@ -11,6 +11,8 @@ import { getWxShareParams } from '@/uni_modules/x-utils/js/appletUtils.js';
 
 import uvUI from '@/uni_modules/uv-ui/index.js'
 
+import { isDev } from '@/common/config.js'
+
 // Android 上架需要
 import { addPermisionInterceptor, removePermisionInterceptor } from '@/uni_modules/x-perm-apply-instr/js_sdk/index.js'
 addPermisionInterceptor('chooseImage', '为了修改个人头像和发布信息图片视频等, 我们需要申请您设备的相机和存储权限')
@@ -23,6 +25,10 @@ addPermisionInterceptor('startLocationUpdate', '为了根据您的位置展示�
 addPermisionInterceptor('scanCode', '为了识别二维码信息, 我们需要申请您设备的相机权限')
 
 export function createApp() {
+    // #ifdef H5
+    if (!isDev)
+        for (let key in console) console[key] = () => {} // 生产环境清除 log
+    // #endif
 
     const app = createSSRApp(App);
 

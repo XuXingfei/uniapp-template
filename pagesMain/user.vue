@@ -2,9 +2,9 @@
     <my-container>
         <view class="container">
             <x-fixed-header>
-                <view class="userInfo radius f-c-x-c">
+                <view class="userInfo radius-20 f-c-x-c">
                     <x-placeholder></x-placeholder>
-                    <image class="radius" :src="$joinUrl(userInfo.avatar) || logo" mode=""></image>
+                    <image class="size-100 radius-20 mt-35" :src="$joinUrl(userInfo.avatar) || logo" mode=""></image>
                     <text @click="$navTo('/pages/login')">昵称：{{ userInfo.nickname || '点击登陆' }}</text>
                 </view>
             </x-fixed-header>
@@ -55,10 +55,6 @@
     .container {
         padding-bottom: 30rpx;
 
-        .radius {
-            border-radius: 20rpx;
-        }
-
         .menu {
             width: 690rpx;
             margin: 0 auto;
@@ -87,11 +83,6 @@
 
             padding-right: (var(--x-safe-right));
             padding-top: (var(--x-safe-top));
-
-            >image {
-                width: 120rpx;
-                height: 120rpx;
-            }
 
             >text {
                 margin-top: 20rpx;

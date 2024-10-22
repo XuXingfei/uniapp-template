@@ -1,11 +1,11 @@
 <template>
     <!-- 全局功能（使用本组件作为页面根元素）-->
-    <x-container :theme-style="themeStyle[globalStore.theme]" :custom-style="customStyle" @container-style="change">
+    <x-container :custom-class="customClass" :theme-style="themeStyle[globalStore.theme]" :custom-style="customStyle" @container-style="change">
         <slot></slot>
+        <x-loading v-if="globalStore.loading" z-index="99999" mask-bg-color="rgba(0, 0, 0, 0.1)" @click="globalStore.setLoading(false)">
+            <self-building-square-spinner :animation-duration="5000" :size="50" :color="globalStore.containerStyle['--theme-color']" />
+        </x-loading>
     </x-container>
-    <x-loading v-if="globalStore.loading" z-index="99999" mask-bg-color="rgba(0, 0, 0, 0.1)" @click="globalStore.setLoading(false)">
-        <self-building-square-spinner :animation-duration="5000" :size="50" :color="globalStore.containerStyle['--theme-color']" />
-    </x-loading>
 </template>
 
 <script>
@@ -28,22 +28,21 @@
 
     export default {
         name: "my-container",
+        props: {
+            customClass: {
+                type: String,
+                default: ''
+            }
+        },
         setup() {
             const globalStore = useGlobalStore()
             return { globalStore }
         },
         data() {
-            // #ifdef MP
-            const menuRect = uni.getMenuButtonBoundingClientRect()
-            const { screenWidth } = uni.getSystemInfoSync()
-            // #endif
             return {
                 themeStyle,
                 customStyle: {
-                    // #ifdef MP
-                    '--x-safe-top': menuRect.bottom + 'px',
-                    '--x-safe-right': screenWidth - menuRect.left + 'px',
-                    // #endif
+                    // '--x-status-bar-height': '0px', 覆盖 x-container 的 innerStyle
                 }
             };
         },

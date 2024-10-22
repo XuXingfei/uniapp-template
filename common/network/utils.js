@@ -47,7 +47,8 @@ export const dataFactory = (data) => {
             data[key] = dataFactory(data[key])
         }
     }
-    return data === null ? '' : data
+    if (data === null || data === 'null' || data === undefined || data === 'undefined') return ''
+    return data
 }
 
 // 输出 JSON 格式请求失败信息(方便提供给后端)
