@@ -47,6 +47,7 @@
     })
 
     onShow(() => {
+        // 没有主题切换需求注释掉这行代码
         gProps.setThemeIcon(globalStore.theme)
     })
 </script>

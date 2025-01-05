@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import { $getCurrentPagePath } from '@/uni_modules/x-utils/js/utils.js'
+    import { getCurrentPagePath } from '@/uni_modules/x-utils/js/utils.js'
     export default {
         name: 'x-tabbar',
         emits: ['tab-click'],
@@ -96,7 +96,7 @@
         },
         data() {
             return {
-                activePath: $getCurrentPagePath(),
+                activePath: getCurrentPagePath(),
                 safeBottom: 0
             };
         },

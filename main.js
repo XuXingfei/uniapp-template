@@ -7,11 +7,9 @@ import * as Pinia from 'pinia';
 import globalProps from '@/plugins/globalProps.js'
 
 import xUtils from '@/uni_modules/x-utils/index.js';
-import { getWxShareParams } from '@/uni_modules/x-utils/js/appletUtils.js';
+import { getWxShareParams } from '@/uni_modules/x-tools/tools/appletUtils.js';
 
 import uvUI from '@/uni_modules/uv-ui/index.js'
-
-import { isDev } from '@/common/config.js'
 
 // Android 上架需要
 import { addPermisionInterceptor, removePermisionInterceptor } from '@/uni_modules/x-perm-apply-instr/js_sdk/index.js'
@@ -26,7 +24,7 @@ addPermisionInterceptor('scanCode', '为了识别二维码信息, 我们需要�
 
 export function createApp() {
     // #ifdef H5
-    if (!isDev)
+    if (process.env.NODE_ENV == 'production')
         for (let key in console) console[key] = () => {} // 生产环境清除 log
     // #endif
 

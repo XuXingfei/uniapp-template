@@ -1,6 +1,6 @@
 //
 
-$borderColor: #d3d3d3;
+$borderColor: #F2F2F2;
 
 .bold {
   font-weight: bold;
@@ -105,7 +105,7 @@ $borderColor: #d3d3d3;
 // 内外边距 圆角
 @for $i from 0 through 50 {
   @for $j from 0 through 50 {
-    @if $i % 8 == 0 and $j % 8 == 0 and $i != $j {
+    @if ($i % 5 == 0 or $i % 8 == 0) and ($j % 5 == 0 or $j % 8 == 0) and $i != $j {
       // 外边距
       .m-#{$i}-#{$j} {
         margin: #{$i}rpx #{$j}rpx;
@@ -118,7 +118,7 @@ $borderColor: #d3d3d3;
     }
   }
 
-  @if $i % 8 == 0 {
+  @if $i % 5 == 0 or $i % 8 == 0 == 0 {
     // 外边距
     .m-#{$i}-auto {
       margin: #{$i}rpx auto;

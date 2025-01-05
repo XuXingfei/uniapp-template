@@ -1,5 +1,5 @@
-import { $getCurrentPagePath } from '@/uni_modules/x-utils/js/utils.js'
-import { _typeof } from '@/uni_modules/x-utils/js/index.js'
+import { getCurrentPagePath } from '@/uni_modules/x-tools/tools/index.js'
+import { _typeof } from '@/uni_modules/x-tools/tools/index.js'
 import { timeFormat } from '@/uni_modules/uv-ui/libs/function/index.js'
 import { hasLogin } from '@/common/utils/index.js'
 
@@ -81,7 +81,7 @@ export const isLoginExpire = code => {
         loginTimer = setTimeout(() => {
 
             // 已在登陆页无需再提示
-            if ($getCurrentPagePath() == '/pages/login') return
+            if (getCurrentPagePath() == '/pages/login') return
 
             hasLogin()
 

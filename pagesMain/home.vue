@@ -1,14 +1,14 @@
 <template>
     <my-container>
         <view class="container f-c">
-            <x-navbar>
+            <x-nav-bar>
                 <text class="navbar_title">首页</text>
-            </x-navbar>
+            </x-nav-bar>
             <!-- 淡入顶部 -->
             <x-fade-in-top :scroll-top="scrollTop">
-                <x-navbar bg-color="var(--theme-color)">
+                <x-nav-bar bg-color="var(--theme-color)">
                     <text class="navbar_title">首页</text>
-                </x-navbar>
+                </x-nav-bar>
             </x-fade-in-top>
 
             <text class="fs-40 bold mb-20">常用组件</text>
@@ -36,7 +36,7 @@
                 {{ i }}
             </view>
 
-            <x-fixed-footer padding="20rpx 30rpx" bg-color="var(--theme-color)">
+            <x-fixed-footer padding="20rpx 30rpx" bg-color="var(--theme-color)" :safe-area="false">
                 <text class="title">固定底部</text>
                 <button @click="loading" style="color: var(--theme-color);">全局loading</button>
             </x-fixed-footer>

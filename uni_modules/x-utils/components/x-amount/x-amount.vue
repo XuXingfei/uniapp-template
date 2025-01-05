@@ -20,7 +20,7 @@
             },
             // 金额
             amount: {
-                type: Number,
+                type: [Number, String],
                 default: 0
             },
             // 符号颜色

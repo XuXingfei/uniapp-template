@@ -1,7 +1,7 @@
 <template>
-    <x-navbar>
+    <x-nav-bar>
         <text>{{ title }}</text>
-    </x-navbar>
+    </x-nav-bar>
     <web-view :src="url" :webview-styles="webviewStyles"></web-view>
 </template>
 

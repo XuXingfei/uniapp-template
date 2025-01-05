@@ -11,6 +11,7 @@
         console.log('onLaunch', e);
         try {
 
+            // 没有主题切换需求注释掉这两行代码
             globalStore.setTheme(uni.getStorageSync('theme'))
             gProps.setThemeIcon(globalStore.theme, 500)
 

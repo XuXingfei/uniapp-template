@@ -1,7 +1,7 @@
 {
     "id": "x-utils",
     "displayName": "工具集",
-    "version": "1.2.9",
+    "version": "2.0.1",
     "description": "自用",
     "keywords": [
         "布局组件",
@@ -33,6 +33,15 @@
         "npmurl": ""
     },
     "uni_modules": {
+        "dependencies": [
+            "x-fade-in-top",
+            "x-fixed-header",
+            "x-fixed-footer",
+            "x-placeholder",
+            "x-nav-bar",
+            "x-container",
+            "x-tools"
+        ],
         "encrypt": [],
         "platforms": {
             "cloud": {
@@ -48,7 +57,8 @@
                 "App": {
                     "app-vue": "y",
                     "app-nvue": "u",
-                    "app-uvue": "n"
+                    "app-uvue": "n",
+                    "app-harmony": "u"
                 },
                 "H5-mobile": {
                     "Safari": "y",

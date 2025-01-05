@@ -1,14 +1,14 @@
 import { useUserStore } from '@/stores/user.js'
 import { userApi, commonApi } from '@/common/api/index.js'
 import { themeStyle } from '@/common/themeStyle.js'
-import { $isTabBarPage } from '@/uni_modules/x-utils/js/utils.js'
+import { isTabBarPage } from '@/uni_modules/x-tools/tools/index.js'
 
 let setThemeIconTimer = null
 export const setThemeIcon = function(theme, ms = 0) {
     setThemeIconTimer && clearTimeout(setThemeIconTimer)
 
     setThemeIconTimer = setTimeout(() => {
-        if (!$isTabBarPage()) return
+        if (!isTabBarPage()) return
 
         uni.setStorageSync('theme', theme);
 
@@ -41,38 +41,6 @@ export const isEmptyValue = value => {
     }
     return false;
 }
-
-// 返回对象属性为空的 property path
-const getEmptyValuePropertyPath = (obj, excludedKeys = []) => {
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key) && !excludedKeys.includes(key)) {
-            let value = obj[key];
-            if (Array.isArray(value)) {
-                // 判断是否为数组对象
-                for (let item of value) {
-                    const childrenKey = getEmptyValuePropertyPath(item, excludedKeys)
-                    if (item instanceof Object && childrenKey) {
-                        return key + '.' + childrenKey;
-                    }
-                }
-                if (value.length === 0) {
-                    return key;
-                }
-            } else if (value instanceof Object) {
-                const childrenKey = getEmptyValuePropertyPath(value, excludedKeys)
-                if (childrenKey) {
-                    return key + '.' + childrenKey;
-                }
-            } else if (isEmptyValue(value)) {
-                return key;
-            }
-        }
-    }
-    return null;
-}
-
-// 有无空字段
-export const hasEmptyField = (obj, excludedKeys = []) => getEmptyValuePropertyPath(obj, excludedKeys)
 
 // 微信小程序支付
 export const mpWxPay = async (orderNo) => {
@@ -159,12 +127,12 @@ export const getLocation = async function(regeo = true, options = {}) {
 export const chooseLocation = async function(regeo = true, options = {}) {
     // #ifdef H5
     return {
-        address: "福田体育公园",
-        area: "福田区",
+        address: "广东省深圳市宝安区海秀路19号",
+        area: "宝安区",
         city: "深圳市",
         latitude: 22.526018,
         longitude: 114.036043,
-        name: "福田体育公园",
+        name: "国际西岸商务大厦",
         province: "广东省",
     }
     // #endif

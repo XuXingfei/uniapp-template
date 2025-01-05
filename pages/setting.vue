@@ -1,9 +1,9 @@
 <template>
     <my-container>
         <view class="container">
-            <x-navbar>
+            <x-nav-bar>
                 <text class="navbar_title">设置</text>
-            </x-navbar>
+            </x-nav-bar>
             <view class="main">
                 <text class="common_title">主题色</text>
                 <view class="theme f-r-y-c-sb">

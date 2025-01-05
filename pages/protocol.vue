@@ -1,9 +1,9 @@
 <template>
     <my-container>
         <view class="container f-c">
-            <x-navbar>
+            <x-nav-bar>
                 <text class="navbar_title">{{ title }}</text>
-            </x-navbar>
+            </x-nav-bar>
             <uv-parse :content="content"></uv-parse>
         </view>
     </my-container>

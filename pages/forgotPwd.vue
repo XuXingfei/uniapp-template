@@ -1,7 +1,7 @@
 <template>
     <my-container>
         <view class="container f-c-x-c">
-            <x-navbar bg-color="transparent"></x-navbar>
+            <x-nav-bar bg-color="transparent"></x-nav-bar>
             <x-placeholder :height="20"></x-placeholder>
             <image class="logo" src="@/static/logo.png" mode=""></image>
             <view class="ipt">
@@ -39,7 +39,7 @@
 <script setup>
     import { ref, reactive } from 'vue'
     import { useCommon } from '@/hooks/useCommon.js'
-    import { countDown } from '@/uni_modules/x-utils/js/index.js'
+    import { countDown } from '@/uni_modules/x-tools/tools/index.js'
     import { userApi } from '@/common/api/index.js'
     const { gProps, userStore, globalStore } = useCommon()
 

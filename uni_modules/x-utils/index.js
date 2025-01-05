@@ -37,14 +37,14 @@ const install = Vue => {
 
     // 路由跳转
     for (let key in router) {
-        if (!targetObj[key] && !uni[key]) targetObj[key] = uni[key] = router[key]
-        else console.error(`${key} key clash, targetObj.${key}=${targetObj[key]}, uni.${key}=${uni[key]}`)
+        if (!targetObj[key]) targetObj['$' + key] = router[key]
+        else console.error(`${key} key clash, targetObj.${key}=${targetObj[key]}`)
     }
 
     // utils
     for (let key in utils) {
-        if (!targetObj[key] && !uni[key]) targetObj[key] = uni[key] = utils[key]
-        else console.error(`${key} key clash, targetObj.${key}=${targetObj[key]}, uni.${key}=${uni[key]}`)
+        if (!targetObj[key]) targetObj['$' + key] = utils[key]
+        else console.error(`${key} key clash, targetObj.${key}=${targetObj[key]}`)
     }
 }
 
