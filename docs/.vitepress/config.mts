@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Uni-App Vue3 模版文档",
-  description: "基于 uv-ui 和 IconPark 的 uni-app Vue3 模版",
-  base: "/",
+  description: "基于 Vue3 的 uni-app 基础模版，集成 uv-ui 与 IconPark，支持 Promise 风格请求拦截、WebSocket 消息与心跳重连、CSS 变量主题切换、自定义全局 Loading 及多端工具函数。",
+  base: "/uniapp-template/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
