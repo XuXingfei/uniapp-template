@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as e,ae as n}from"./chunks/framework.ENE7fGf6.js";const k=JSON.parse('{"title":"项目文档","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),l={name:"README.md"};function t(p,a,h,r,d,o){return e(),i("div",null,[...a[0]||(a[0]=[n("",10)])])}const u=s(l,[["render",t]]);export{k as __pageData,u as default};
