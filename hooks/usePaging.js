@@ -43,8 +43,6 @@ export function usePaging(api, params = {}, mountedGet = true, autoGet = true, p
                     pageSize,
                 })
 
-                res.data.forEach(i => i._checked = false)
-
                 res.pageNo = 1
 
                 pagingInfo.value = res
@@ -61,8 +59,6 @@ export function usePaging(api, params = {}, mountedGet = true, autoGet = true, p
                 pageNo: pagingInfo.value.pageNo + 1,
                 pageSize
             })
-
-            res.data.forEach(i => i._checked = false)
 
             res.pageNo = pagingInfo.value.pageNo = pagingInfo.value.pageNo + 1
 

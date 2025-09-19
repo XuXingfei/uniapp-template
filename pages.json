@@ -41,6 +41,13 @@
                 "style": {
                     "navigationBarTitleText": ""
                 }
+            },
+            {
+                "path": "webview",
+                "style": {
+                    "navigationBarTitleText": "",
+                    "navigationStyle": "default"
+                }
             }
         ]
     }],
@@ -56,7 +63,7 @@
         "navigationBarBackgroundColor": "#F8F8F8",
         "backgroundColor": "#F8F8F8",
         "navigationStyle": "custom",
-        "enablePullDownRefresh": true,
+        "enablePullDownRefresh": false,
         "pullToRefresh": {
             "color": "#87ceeb"
         }
@@ -71,14 +78,14 @@
         "list": [{
                 "pagePath": "pagesMain/home",
                 "text": "首页",
-                "iconPath": "static/tabIcon/home.png",
-                "selectedIconPath": "static/tabIcon/home.png"
+                "iconPath": "/static/tabIcon/home.png",
+                "selectedIconPath": "/static/tabIcon/home.png"
             },
             {
                 "pagePath": "pagesMain/user",
                 "text": "我的",
-                "iconPath": "static/tabIcon/me.png",
-                "selectedIconPath": "static/tabIcon/me.png"
+                "iconPath": "/static/tabIcon/me.png",
+                "selectedIconPath": "/static/tabIcon/home.png"
             }
         ]
     },

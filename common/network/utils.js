@@ -1,3 +1,4 @@
+import { useUserStore } from '@/stores/user.js'
 import { getCurrentPagePath } from '@/uni_modules/x-tools/tools/index.js'
 import { _typeof } from '@/uni_modules/x-tools/tools/index.js'
 import { timeFormat } from '@/uni_modules/uv-ui/libs/function/index.js'
@@ -62,7 +63,7 @@ export const logReqErr = res => {
         data: reqConf.data,
     }
 
-    const errInfo = `请求失败信息\nstatusCode: ${statusCode}\nrequest: ${JSON.stringify(request, null, 4)}\nresponse: ${JSON.stringify(response, null, 4)}\ntime: ${new Date().toString()}`
+    const errInfo = `请求失败信息\nstatusCode: ${statusCode}\nrequest: ${JSON.stringify(request, null, 4)}\nresponse: ${JSON.stringify(response, null, 4)}\ntime: ${new Date().toLocaleString()}`
 
     console.log(errInfo)
 

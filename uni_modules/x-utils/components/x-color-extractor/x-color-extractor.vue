@@ -47,7 +47,7 @@
             }
         },
         mounted() {
-            console.log('------------');
+            // console.log('------------');
             this.init()
         },
         methods: {

@@ -1,113 +1,82 @@
 <template>
-    <view class="upload-image">
-        <view v-if="title" class="title">
-            {{ title }}
-        </view>
-        <view class="imgs f-r f-wp" :style="{ width: width + 'rpx' }">
-            <view class="img" v-for="i in imgs">
-                <close-one class="del" theme="filled" size="37" fill="#666666" @click="del(i)" />
-                <image :src="$joinUrl(i)" mode=""></image>
-            </view>
-            <view v-if="imgs.length < size" class="add f-r-xy-c" @click="uploadImg">
-                <slot>
-                    <plus theme="outline" size="150" fill="#ccc" />
-                </slot>
-            </view>
-        </view>
-    </view>
+	<view class="upload-image" :style="[{margin}, customStyle]">
+		<view v-if="img" class="img" :style="customStyle">
+			<view class="del" @click.stop="del">
+				<close-one theme="filled" size="37" fill="#666666" />
+			</view>
+			<image :src="img" mode="aspectFill" :style="customStyle" @click="$previewImage([img])"></image>
+		</view>
+		<view v-else class="add f-r-xy-c" :style="customStyle" @click="uploadImg">
+			<slot>
+				<plus theme="outline" size="100" fill="#ccc" />
+			</slot>
+		</view>
+	</view>
 </template>
 
 <script>
-    export default {
-        name: "my-upload-image",
-        props: {
-            width: {
-                type: [Number, String],
-                default: 690
-            },
-            imgs: {
-                type: Array,
-                default: () => []
-            },
-            size: {
-                type: Number,
-                default: 9
-            },
-            title: {
-                type: String,
-                default: ''
-            },
-        },
-        data() {
-            return {
-                itemWidth: 0
-            };
-        },
-        created() {
-            this.itemWidth = (this.width - 40) / 3 + 'rpx'
-        },
-        methods: {
-            uploadImg() {
-                this.$uploadImage().then(res => {
-                    console.log(res);
-                    if (res) this.$emit('update:imgs', [...this.imgs, res])
-                })
-            },
-            del(i) {
-                this.$emit('update:imgs', this.imgs.filter(f => f != i))
-            }
-        }
-    }
+	export default {
+		name: "my-upload-image",
+		props: {
+			size: {
+				type: String,
+				default: '140rpx'
+			},
+			img: {
+				type: String,
+				default: ''
+			},
+			margin: {
+				type: String,
+				default: ''
+			},
+			customStyle: {
+				type: Object,
+				default: () => ({})
+			}
+		},
+		methods: {
+			uploadImg() {
+				this.$uploadImage().then(res => {
+					if (res[0]) this.$emit('update:img', res[0])
+				})
+			},
+			del(i) {
+				this.$emit('update:img', '')
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
-    .upload-image {
-        width: fit-content;
-        margin: 20rpx auto;
+	.upload-image {
+		width: fit-content;
+		margin: 20rpx auto;
 
-        .title {
-            margin-bottom: 40rpx;
-            font-family: Roboto, Roboto;
-            font-weight: 400;
-            font-size: 29rpx;
-            color: #333333;
-        }
+		.img,
+		.add {
+			position: relative;
+			width: v-bind(size);
+			height: v-bind(size);
+			background: #F5F5F5;
+			border-radius: 12rpx;
 
-        .imgs {
+			image {
+				width: 100%;
+				height: 100%;
+				border-radius: 20rpx;
+			}
 
-            .img,
-            .add {
-                position: relative;
-                width: v-bind(itemWidth);
-                height: v-bind(itemWidth);
-                border-radius: 20rpx;
+			.del {
+				z-index: 1;
+				position: absolute;
+				right: -17rpx;
+				top: -17rpx;
+			}
+		}
 
-                image {
-                    width: 100%;
-                    height: 100%;
-                }
-
-                .del {
-                    z-index: 1;
-                    position: absolute;
-                    right: -17rpx;
-                    top: -17rpx;
-                }
-            }
-
-            .add {
-                overflow: hidden;
-                border: 1px dashed #ccc;
-            }
-
-            >view {
-                margin-right: 20rpx;
-                margin-bottom: 20rpx;
-
-                &:nth-child(3n) {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
+		.add {
+			overflow: hidden;
+		}
+	}
 </style>

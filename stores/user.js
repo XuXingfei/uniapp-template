@@ -1,36 +1,34 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
-import { getUserInfo } from '@/common/api/user.js'
+import { ref, computed } from "vue";
+import { defineStore } from "pinia";
+import { getUserInfo } from "@/common/api/user.js";
 
-export const useUserStore = defineStore('user', () => {
-
-    const token = ref('')
+export const useUserStore = defineStore("user", () => {
+    const token = ref("");
 
     function setToken(payload) {
-        token.value = payload
-        uni.setStorageSync('token', payload)
+        token.value = payload;
+        uni.setStorageSync("token", payload);
     }
 
-    const userInfo = ref({})
+    const userInfo = ref({});
 
     async function setUserInfo() {
         try {
-            const res = await getUserInfo()
-            Object.assign(userInfo.value, res)
-            return res
+            const res = await getUserInfo();
+            Object.assign(userInfo.value, res);
+            return res;
         } catch (e) {
-            return Promise.reject(e)
+            return Promise.reject(e);
         }
     }
 
     function logout() {
-        userInfo.value = {}
-        setToken('')
+        userInfo.value = {};
+        setToken("");
         uni.reLaunch({
-            url: '/pages/login'
-        })
+            url: "/pages/login"
+        });
     }
-
 
     return {
         token,
@@ -38,5 +36,5 @@ export const useUserStore = defineStore('user', () => {
         userInfo,
         setUserInfo,
         logout
-    }
-})
+    };
+});

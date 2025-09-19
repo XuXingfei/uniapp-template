@@ -35,6 +35,7 @@
                     '--x-status-bar-height': statusBarHeight + 'px',
                     '--x-safe-top': safeAreaInsets.top + 'px',
                     '--x-safe-bottom': safeAreaInsets.bottom + 'px',
+                    '--x-safe-right': '0px',
                     // #ifdef MP
                     '--x-safe-top': menuRect.bottom + 'px',
                     '--x-safe-right': screenWidth - menuRect.left + 'px',

@@ -10,8 +10,6 @@ export const setThemeIcon = function(theme, ms = 0) {
     setThemeIconTimer = setTimeout(() => {
         if (!isTabBarPage()) return
 
-        uni.setStorageSync('theme', theme);
-
         uni.setTabBarStyle({
             selectedColor: themeStyle[theme]['--theme-color'],
         });
@@ -28,18 +26,19 @@ export const setThemeIcon = function(theme, ms = 0) {
     }, ms)
 }
 
-// 判空
-export const isEmptyValue = value => {
-    if (value === null || value === undefined || value === '') {
-        return true;
-    }
-    if (Array.isArray(value)) {
-        return value.length === 0;
-    }
-    if (typeof value === 'object') {
-        return Object.keys(value).length === 0;
-    }
-    return false;
+// 微信支付
+export const wxPay = async (orderNo) => {
+
+    if (!orderNo) return Promise.reject()
+
+    const params = await commonApi.wxPay({
+        orderNo
+    })
+
+    await uni.requestPayment({
+        provider: 'wxpay',
+        orderInfo: params
+    })
 }
 
 // 微信小程序支付
@@ -48,8 +47,7 @@ export const mpWxPay = async (orderNo) => {
     if (!orderNo) return Promise.reject()
 
     const params = await commonApi.mpWxPay({
-        orderNo,
-        payType: 'smallPay'
+        orderNo
     })
 
     await uni.requestPayment({
@@ -58,7 +56,7 @@ export const mpWxPay = async (orderNo) => {
         nonceStr: params.nonceStr,
         package: params.package,
         signType: params.signType,
-        paySign: params.paySign
+        paySign: params.sign
     })
 }
 
@@ -195,21 +193,4 @@ export const hasLogin = (showModal = true) => {
 export const formatAmount = function(amount) {
     if (!amount) return amount
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-// h5 文件转 Base64
-export function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = function(event) {
-            resolve(event.target.result);
-        };
-
-        reader.onerror = function(error) {
-            reject(error);
-        };
-
-        reader.readAsDataURL(file);
-    });
 }

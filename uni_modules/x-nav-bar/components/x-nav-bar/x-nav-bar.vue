@@ -193,6 +193,7 @@
             }
 
             .nav-bar-left {
+                z-index: 1;
                 .back {
                     display: flex;
                     align-items: center;

@@ -34,3 +34,9 @@ export const sysInfo = uni.getSystemInfoSync()
 
 // 版本号
 export const appVersion = sysInfo.appVersion
+
+const { platform, uniPlatform } = sysInfo
+
+export const isIos = platform == "ios"
+
+export const isIosApp = platform == "ios" && uniPlatform == 'app'

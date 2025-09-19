@@ -1,15 +1,19 @@
 {
   "id": "x-filter-bg",
-  "displayName": "背景虚化，背景过滤，背景模糊（将模糊或颜色偏移等图形效果应用于元素） ",
-  "version": "1.0.0",
-  "description": "在某些情况下我们只需要对元素的背景图/背景色进行虚化，过滤，在使用 CSS filter 属性时 会直接作用于整个元素导致达不到预期效果, 使用组件将他们分离开 ",
+  "displayName": "背景滤镜效果组件 毛玻璃背景效果 滤镜效果 背景图片",
+  "version": "1.0.1",
+  "description": "一个具有背景滤镜效果的 Vue 组件，可以为内容提供美观的毛玻璃背景效果。组件支持自定义尺寸、滤镜效果、背景图片等多种配置选项。",
   "keywords": [
-    "背景虚化",
-    "背景过滤",
-    "背景模糊"
-],
+    "背景滤镜效果组件",
+    "毛玻璃背景效果",
+    "滤镜效果",
+    "背景图片"
+  ],
   "repository": "",
-"engines": {
+  "engines": {
+    "HBuilderX": "^3.1.0",
+    "uni-app": "^3.1.0",
+    "uni-app-x": "^3.1.0"
   },
   "dcloudext": {
     "type": "component-vue",
@@ -29,54 +33,66 @@
       "data": "无",
       "permissions": "无"
     },
-    "npmurl": ""
+    "npmurl": "",
+    "darkmode": "-",
+    "i18n": "-",
+    "widescreen": "-"
   },
   "uni_modules": {
     "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {
-        "tcb": "y",
-        "aliyun": "y",
-        "alipay": "y"
+        "tcb": "√",
+        "aliyun": "√",
+        "alipay": "√"
       },
       "client": {
-        "Vue": {
-          "vue2": "y",
-          "vue3": "y"
+        "uni-app": {
+          "vue": {
+            "vue2": "-",
+            "vue3": "-"
+          },
+          "web": {
+            "safari": "-",
+            "chrome": "-"
+          },
+          "app": {
+            "vue": "-",
+            "nvue": "-",
+            "android": "-",
+            "ios": "-",
+            "harmony": "-"
+          },
+          "mp": {
+            "weixin": "-",
+            "alipay": "-",
+            "toutiao": "-",
+            "baidu": "-",
+            "kuaishou": "-",
+            "jd": "-",
+            "harmony": "-",
+            "qq": "-",
+            "lark": "-"
+          },
+          "quickapp": {
+            "huawei": "-",
+            "union": "-"
+          }
         },
-        "App": {
-          "app-vue": "y",
-          "app-nvue": "u",
-          "app-uvue": "n"
-        },
-        "H5-mobile": {
-          "Safari": "y",
-          "Android Browser": "y",
-          "微信浏览器(Android)": "y",
-          "QQ浏览器(Android)": "y"
-        },
-        "H5-pc": {
-          "Chrome": "y",
-          "IE": "y",
-          "Edge": "y",
-          "Firefox": "y",
-          "Safari": "y"
-        },
-        "小程序": {
-          "微信": "y",
-          "阿里": "y",
-          "百度": "y",
-          "字节跳动": "y",
-          "QQ": "y",
-          "钉钉": "y",
-          "快手": "y",
-          "飞书": "y",
-          "京东": "y"
-        },
-        "快应用": {
-          "华为": "y",
-          "联盟": "y"
+        "uni-app-x": {
+          "web": {
+            "safari": "-",
+            "chrome": "-"
+          },
+          "app": {
+            "android": "-",
+            "ios": "-",
+            "harmony": "-"
+          },
+          "mp": {
+            "weixin": "-"
+          }
         }
       }
     }

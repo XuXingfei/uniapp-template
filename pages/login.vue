@@ -41,7 +41,7 @@
 
     async function login() {
         try {
-            if (gProps.hasEmptyField(form)) return gProps.$toast('请填写完整')
+            if (gProps.$hasEmptyField(form)) return gProps.$toast('请填写完整')
 
             const token = await userApi.login(form)
 

@@ -2,8 +2,45 @@ export * as sugar from './sugar'
 export * as router from './router'
 export * as h5Utils from './h5Utils'
 export * as appletUtils from './appletUtils'
+export * from './retryAsync'
 
 import pagesJson from '@/pages.json'
+
+export const isPromise = (obj) => {
+    return !!obj && (typeof obj === "object" || typeof obj === "function") && typeof obj.then === "function";
+}
+
+let promisifyFlag = false
+export const promisify = () => {
+
+    if (promisifyFlag) return
+
+    promisifyFlag = true
+
+    // #ifdef VUE2
+    uni.addInterceptor({
+        returnValue(res) {
+            if (isPromise(res)) {
+                return new Promise((resolve, reject) => {
+                    res.then((res) => {
+                        if (Array.isArray(res)) {
+                            if (res[0]) reject(res[0])
+                            else resolve(res[1])
+                        } else {
+                            if (typeof res == 'object' && String(res.errMsg).includes(':ok')) {
+                                resolve(res)
+                            } else {
+                                reject(res)
+                            }
+                        }
+                    });
+                });
+            }
+            return res;
+        },
+    });
+    // #endif
+}
 
 // 获取类型
 export const _typeof = val => Object.prototype.toString.call(val).slice(8, -1).toLowerCase()

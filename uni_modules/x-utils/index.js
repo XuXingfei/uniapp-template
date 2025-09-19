@@ -32,18 +32,28 @@ const install = Vue => {
         strArr.splice(start, deleteCount, ...args)
         return strArr.join('')
     }
+    
+    if (!Array.prototype.at) {
+        Array.prototype.at = function(index) {
+            if (index >= 0) {
+                return this[index]
+            } else {
+                return this[this.length + index]
+            }
+        }
+    }
 
     targetObj.homePath = uni.homePath = homePath
 
     // 路由跳转
     for (let key in router) {
-        if (!targetObj[key]) targetObj['$' + key] = router[key]
+        if (!targetObj['$' + key]) targetObj['$' + key] = router[key]
         else console.error(`${key} key clash, targetObj.${key}=${targetObj[key]}`)
     }
 
     // utils
     for (let key in utils) {
-        if (!targetObj[key]) targetObj['$' + key] = utils[key]
+        if (!targetObj['$' + key]) targetObj['$' + key] = utils[key]
         else console.error(`${key} key clash, targetObj.${key}=${targetObj[key]}`)
     }
 }

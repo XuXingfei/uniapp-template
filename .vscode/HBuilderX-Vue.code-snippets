@@ -1,0 +1,941 @@
+{
+	// 此代码片段文件由 HBuilderX 配置转换而来。原 'scope'、'project' 和 'triggerAssist' 属性已忽略。
+	
+	"Vue Base": {
+			"prefix": "vbase",
+			"body": [
+					"<template>",
+					"\t<${1:div}>",
+					"",
+					"\t</${1:div}>",
+					"</template>",
+					"",
+					"<script>",
+					"\texport default {",
+					"\t\t${0}",
+					"\t}",
+					"</script>",
+					"",
+					"<style scoped>",
+					"",
+					"</style>"
+			],
+			"description": "Base for Vue File"
+	},
+	"Vue v-for Shortcut Directive": {
+			"prefix": "vfor",
+			"body": [
+					"<${1:div} v-for=\"${2:item} in ${2:item}s\" :key=\"${2:item}.id\">",
+					"\t{{ ${2:item} }}",
+					"</${1:div}>"
+			],
+			"description": "vfor statement"
+	},
+	"Vue v-model Directive": {
+			"prefix": "vmodel",
+			"body": [
+					"<input v-model=\"${1:data}\" type=\"text\" />"
+			],
+			"description": "v-model directive"
+	},
+	"Vue v-model Number Directive": {
+			"prefix": "vmodel-num",
+			"body": [
+					"<input v-model.number=\"${1:numData}\" type=\"number\" step=\"1\" />"
+			],
+			"description": "v-model directive number input"
+	},
+	"Vue Class Binding": {
+			"prefix": "vclass",
+			"body": [
+					"<${1:div} :class=\"{ ${2:className}: ${3:data} }\"></${1:div}>"
+			],
+			"description": "vue class binding"
+	},
+	"Vue Class Binding Object": {
+			"prefix": "vclass-obj",
+			"body": [
+					"<${1:div} :class=\"[${2:classNameA}, ${3:classNameB}]\"></${1:div}>"
+			],
+			"description": "vue class binding"
+	},
+	"Vue Multiple Conditional Class Bindings": {
+			"prefix": "vclass-obj-mult",
+			"body": [
+					"<${1:div} :class=\"[${2:classNameA}, {${3:classNameB} : ${4:condition}}]\"></${1:div}>"
+			],
+			"description": "vue multiple conditional class bindings"
+	},
+	"Vue Style Binding": {
+			"prefix": "vstyle",
+			"body": [
+					"<${1:div} :style=\"{ fontSize: ${2:data} + 'px' }\"></${1:div}>"
+			],
+			"description": "vue inline style binding"
+	},
+	"Vue Style Binding Object": {
+			"prefix": "vstyle-obj",
+			"body": [
+					"<${1:div} :style=\"[${2:styleObjectA}, ${3:styleObjectB}]}\"></${1:div}>"
+			],
+			"description": "vue inline style binding, objects"
+	},
+	"Vue Image Source Binding": {
+			"prefix": "vsrc",
+			"body": [
+					"<img :src=\"'/path/to/images/' + ${1:fileName}\" alt=\"${2:altText}\"/>"
+			],
+			"description": "image source binding"
+	},
+	"Vue Component with Props Binding": {
+			"prefix": "vel-props",
+			"body": [
+					"<${1:component} :${1:propName}=\"${0}\"></${1:component}>"
+			],
+			"description": "component element with props"
+	},
+	"Vue Nuxt Routing Link": {
+			"prefix": "vnuxtl",
+			"body": [
+					"<nuxt-link to=\"/${1:page}\">${1:page}</nuxt-link>"
+			],
+			"description": "nuxt routing link"
+	},
+	"Vue Transition Component with JavaScript Hooks": {
+			"prefix": "vanim",
+			"body": [
+					"<transition",
+					"\tmode=\"out-in\"",
+					"\t@before-enter=\"beforeEnter\"",
+					"\t@enter=\"enter\"",
+					"",
+					"\t@before-leave=\"beforeLeave\"",
+					"\t@leave=\"leave\"",
+					"\t:css=\"false\">",
+					"",
+					"</transition>"
+			],
+			"description": "transition component js hooks"
+	},
+	"Vue v-for": {
+			"prefix": "v-for",
+			"body": [
+					"v-for=\"(${1:item},${2:index}) in ${3:Data}\""
+			]
+	},
+	"Vue v-on Click": {
+			"prefix": "von",
+			"body": [
+					"@click=\"${1:handler}(${2:arg}, $event)\""
+			],
+			"description": "v-on click handler with arguments"
+	},
+	"a_href": {
+			"prefix": "ahref",
+			"body": [
+					"<a href=\"$1\">$0</a>"
+			]
+	},
+	"div_id": {
+			"prefix": "div",
+			"body": [
+					"<div id=\"$1\">",
+					"\t$0",
+					"</div>"
+			]
+	},
+	"div_class": {
+			"prefix": "divc",
+			"body": [
+					"<div class=\"$1\">",
+					"\t$0",
+					"</div>"
+			]
+	},
+	"span_id": {
+			"prefix": "span",
+			"body": [
+					"<span id=\"$1\">",
+					"\t$0",
+					"</span>"
+			]
+	},
+	"ul_li": {
+			"prefix": "ul",
+			"body": [
+					"<ul>",
+					"\t<li>$1</li>",
+					"</ul>"
+			]
+	},
+	"dl_dt_dd": {
+			"prefix": "dl",
+			"body": [
+					"<dl>",
+					"\t<dt>$1</dt>",
+					"\t<dd>$2</dd>",
+					"</dl>"
+			]
+	},
+	"head_structure": {
+			"prefix": "head",
+			"body": [
+					"<head>",
+					"\t<meta charset=\"utf-8\"/>",
+					"\t<title>$1</title>",
+					"\t",
+					"</head>"
+			]
+	},
+	"meta_name_content": {
+			"prefix": "meta",
+			"body": [
+					"<meta name=\"$1\" content=\"$2\"/>"
+			]
+	},
+	"meta_GB2312": {
+			"prefix": "metagb",
+			"body": [
+					"<meta charset=\"GB2312\"/>"
+			]
+	},
+	"meta_keywords": {
+			"prefix": "metakeywords",
+			"body": [
+					"<meta name=\"Keywords\" content=\"$1\"/>"
+			]
+	},
+	"meta_nocache": {
+			"prefix": "metanocache",
+			"body": [
+					"<meta http-equiv=\"Pragma\" content=\"no-cache\" />"
+			]
+	},
+	"meta_viewport": {
+			"prefix": "metaviewport",
+			"body": [
+					"<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no\" />"
+			]
+	},
+	"script_type": {
+			"prefix": "script",
+			"body": [
+					"<script type=\"text/javascript\">",
+					"\t$0",
+					"</script>"
+			]
+	},
+	"script_src_type": {
+			"prefix": "scsrc",
+			"body": [
+					"<script src=\"$1\" type=\"text/javascript\" charset=\"${3:utf-8}\"></script>"
+			]
+	},
+	"script html5plus": {
+			"prefix": "sctplus",
+			"body": [
+					"<script src=\"html5plus://ready\"></script>"
+			],
+			"description": "html5plus提前注入时需要加上此script块"
+	},
+	"style_type": {
+			"prefix": "style",
+			"body": [
+					"<style type=\"text/css\">",
+					"\t$0",
+					"</style>"
+			]
+	},
+	"form_action_method": {
+			"prefix": "form",
+			"body": [
+					"<form action=\"$1\" method=\"$2\">",
+					"\t$0",
+					"</form>"
+			]
+	},
+	"form_submit": {
+			"prefix": "form",
+			"body": [
+					"<form action=\"$1\" method=\"${2:post}\">",
+					"\t$0",
+					"\t<input type=\"submit\" value=\"$3\"/>",
+					"</form>"
+			]
+	},
+	"input_structure": {
+			"prefix": "input",
+			"body": [
+					"<input type=\"$1\" name=\"$2\" id=\"$2\" value=\"$3\" />"
+			]
+	},
+	"input_text": {
+			"prefix": "intext",
+			"body": [
+					"<input type=\"text\" id=\"$1\" value=\"$2\" />"
+			]
+	},
+	"input_lable": {
+			"prefix": "inputlable",
+			"body": [
+					"<input type=\"${1:radio}\" name=\"$2\" id=\"$2\" value=\"$3\"/><label for=\"$2\">$4</label>"
+			]
+	},
+	"input_reset": {
+			"prefix": "inreset",
+			"body": [
+					"<input type=\"reset\" value=\"$1\" />"
+			]
+	},
+	"input_submit": {
+			"prefix": "insubmit",
+			"body": [
+					"<input type=\"submit\" id=\"$1\" name=\"$2\" />"
+			]
+	},
+	"input_search": {
+			"prefix": "insearch",
+			"body": [
+					"<input type=\"search\" name=\"$1\" required=\"$2\" placeholder=\"Search\" x-webkit-speech=\"$3\" x-webkit-grammar=\"builtin:search\" lang=\"zh-CN\">"
+			]
+	},
+	"button_type": {
+			"prefix": "button",
+			"body": [
+					"<button type=\"button\">$0</button>"
+			]
+	},
+	"select_option": {
+			"prefix": "select",
+			"body": [
+					"<select name=\"$1\">",
+					"\t<option value=\"$2\">$3</option>",
+					"</select>"
+			]
+	},
+	"canvas (id width height)": {
+			"prefix": "canvas",
+			"body": [
+					"<canvas id=\"$1\" width=\"$2\" height=\"$3\"></canvas>"
+			]
+	},
+	"iframe_src_width_height": {
+			"prefix": "iframe",
+			"body": [
+					"<iframe src=\"$1\" width=\"$2\" height=\"$3\"></iframe>"
+			]
+	},
+	"video_structure": {
+			"prefix": "video",
+			"body": [
+					"<video width=\"${1:800}\" height=\"$2\">",
+					"\t<source src=\"${3:myvideo.mp4}\" type=\"video/mp4\"></source>",
+					"\t<source src=\"${4:myvideo.ogv}\" type=\"video/ogg\"></source>",
+					"\t<source src=\"${5:myvideo.webm}\" type=\"video/webm\"></source>",
+					"\t<object width=\"$6\" height=\"$7\" type=\"application/x-shockwave-flash\" data=\"${8:myvideo.swf}\">",
+					"\t\t<param name=\"movie\" value=\"$8\" />",
+					"\t\t<param name=\"flashvars\" value=\"autostart=true&amp;file=$8\" />",
+					"\t</object>",
+					"\t当前浏览器不支持 video直接播放，点击这里下载视频: <a href=\"${9:myvideo.webm}\">下载视频</a>",
+					"</video>"
+			]
+	},
+	"base_href_target": {
+			"prefix": "baseht",
+			"body": [
+					"<base href=\"$0\" target=\"$1\" />"
+			]
+	},
+	"fieldset_id": {
+			"prefix": "fieldset",
+			"body": [
+					"<fieldset id=\"$2\">",
+					"\t<legend>$1</legend>",
+					"\t",
+					"\t$0",
+					"</fieldset>"
+			]
+	},
+	"Non-Breaking Space": {
+			"prefix": "space",
+			"body": [
+					"&nbsp;"
+			]
+	},
+	"<!--[if IE]>": {
+			"prefix": "ifie",
+			"body": [
+					"<!--[if IE]>",
+					"\t$1",
+					"<![endif]-->"
+			]
+	},
+	"<!--[if lte IE 6]>": {
+			"prefix": "ifie6",
+			"body": [
+					"<!--[if lte IE 6]>",
+					"\t$1",
+					"<![endif]-->"
+			]
+	},
+	"#ifdef": {
+			"prefix": "ifdef",
+			"body": [
+					"<!-- #ifdef ${1:APP/APP-ANDROID/APP-IOS/APP-HARMONY/APP-VUE/VUE2/VUE3/MP-ALIPAY/MP-BAIDU/MP-WEIXIN/MP-QQ/MP-TOUTIAO/MP-360/MP-KUAISHOU/MP-LARK/MP-JD/MP/WEB/QUICKAPP-WEBVIEW-HUAWEI/QUICKAPP-WEBVIEW-UNION/QUICKAPP-WEBVIEW/UNI-APP-X/uniVersion} -->",
+					"$0",
+					"<!-- #endif -->"
+			]
+	},
+	"#ifndef": {
+			"prefix": "ifndef",
+			"body": [
+					"<!-- #ifndef ${1:APP/APP-ANDROID/APP-IOS/APP-HARMONY/APP-VUE/VUE2/VUE3/MP-ALIPAY/MP-BAIDU/MP-WEIXIN/MP-QQ/MP-TOUTIAO/MP-360/MP-KUAISHOU/MP-LARK/MP-JD/MP/WEB/QUICKAPP-WEBVIEW-HUAWEI/QUICKAPP-WEBVIEW-UNION/QUICKAPP-WEBVIEW/UNI-APP-X/uniVersion} -->",
+					"$0",
+					"<!-- #endif -->"
+			]
+	},
+	"data-": {
+			"prefix": "data-",
+			"body": [
+					"data-${1:type} = \"$2\""
+			]
+	},
+	"ng-": {
+			"prefix": "ng-",
+			"body": [
+					"ng-${1:app}=\"$2\""
+			]
+	},
+	"ng-pluralize": {
+			"prefix": "ngp",
+			"body": [
+					"<ng-pluralize>$1</ng-pluralize>"
+			]
+	},
+	"uView": {
+			"prefix": "uview",
+			"body": [
+					"<view class=\"$1\">$0</view>"
+			]
+	},
+	"view_class": {
+			"prefix": "viewclass",
+			"body": [
+					"<view class=\"$1\">",
+					"\t$0",
+					"</view>"
+			]
+	},
+	"uText": {
+			"prefix": "utext",
+			"body": [
+					"<text>$0</text>"
+			]
+	},
+	"uImage": {
+			"prefix": "uimage",
+			"body": [
+					"<image src=\"$1\" mode=\"$2\"></image>"
+			]
+	},
+	"uInput": {
+			"prefix": "uinput",
+			"body": [
+					"<input type=\"text\" value=\"$0\" />"
+			]
+	},
+	"uTextarea": {
+			"prefix": "utextarea",
+			"body": [
+					"<textarea value=\"$1\" placeholder=\"$0\" />"
+			]
+	},
+	"uButton": {
+			"prefix": "ubutton",
+			"body": [
+					"<button type=\"default\">$1</button>"
+			]
+	},
+	"uSwitch": {
+			"prefix": "uswitch",
+			"body": [
+					"<switch checked=\"true\" @change=\"$1\" />"
+			]
+	},
+	"uSlider": {
+			"prefix": "uslider",
+			"body": [
+					"<slider @change=\"$1\"/>"
+			]
+	},
+	"uVideo": {
+			"prefix": "uvideo",
+			"body": [
+					"<video src=\"$1\" controls></video>"
+			]
+	},
+	"uAudio": {
+			"prefix": "uaudio",
+			"body": [
+					"<audio :src=\"$1\" :poster=\"$0\" :name=\"$2\" :author=\"$3\" :action=\"$4\" controls></audio>"
+			]
+	},
+	"uRichText": {
+			"prefix": "urichtext",
+			"body": [
+					"<rich-text :nodes=\"$1\"></rich-text>"
+			]
+	},
+	"uNavigator": {
+			"prefix": "unavigator",
+			"body": [
+					"<navigator url=\"$1\">$0</navigator>"
+			]
+	},
+	"uWebView": {
+			"prefix": "uwebview",
+			"body": [
+					"<web-view src=\"$1\"></web-view>"
+			]
+	},
+	"uSwiper": {
+			"prefix": "uswiper",
+			"body": [
+					"<swiper :indicator-dots=\"true\" :autoplay=\"true\" :interval=\"3000\" :duration=\"1000\">",
+					"\t<swiper-item>",
+					"\t\t<view class=\"swiper-item\">$1</view>",
+					"\t</swiper-item>",
+					"\t<swiper-item>",
+					"\t\t<view class=\"swiper-item\">$2</view>",
+					"\t</swiper-item>",
+					"</swiper>"
+			]
+	},
+	"uScrollView": {
+			"prefix": "uscrollview",
+			"body": [
+					"<scroll-view scroll-y=\"true\" $1>",
+					"\t<view>$0</view>",
+					"</scroll-view>"
+			]
+	},
+	"uPicker": {
+			"prefix": "upicker",
+			"body": [
+					"<picker mode=\"$1\" :range=\"$2\" @change=\"$3\">",
+					"\t<view>{{$0}}</view>",
+					"</picker>"
+			]
+	},
+	"uPickerView": {
+			"prefix": "upickerview",
+			"body": [
+					"<picker-view indicator-style=\"height: 50px;\" :value=\"value$1\" @change=\"bindChange\">",
+					"\t<picker-view-column>",
+					"\t\t$0",
+					"\t</picker-view-column>",
+					"\t<picker-view-column>",
+					"\t\t$2",
+					"\t</picker-view-column>",
+					"\t<picker-view-column>",
+					"\t\t",
+					"\t</picker-view-column>",
+					"</picker-view>"
+			]
+	},
+	"uMap": {
+			"prefix": "umap",
+			"body": [
+					"<map :latitude=\"$1\" :longitude=\"$0\"></map>"
+			]
+	},
+	"uEditor": {
+			"prefix": "uEditor",
+			"body": [
+					"<editor placeholder=\"$1\"></editor>"
+			]
+	},
+	"uTemplate": {
+			"prefix": "utemplate",
+			"body": [
+					"<template>",
+					"\t<view>$0</view>",
+					"</template>"
+			]
+	},
+	"uPageMeta": {
+			"prefix": "pagemeta",
+			"body": [
+					"<page-meta :background-text-style=\"$0\" :background-color=\"$1\">",
+					"\t$0",
+					"</page-meta>"
+			]
+	},
+	"uNavigationBar": {
+			"prefix": "navigationbar",
+			"body": [
+					"<navigation-bar :title=\"$0\"/>"
+			]
+	},
+	"uCustomTabBar": {
+			"prefix": "customtabbar",
+			"body": [
+					"<custom-tab-bar direction=\"$1\" :show-icon=\"$2\" :selected=\"$3\" @onTabItemTap=\"$4\" />"
+			]
+	},
+	"uBadge": {
+			"prefix": "ubadge",
+			"body": [
+					"<uni-badge text=\"$1\" type=\"$2\"></uni-badge>"
+			]
+	},
+	"uTag": {
+			"prefix": "utag",
+			"body": [
+					"<uni-tag text=\"$1\" type=\"$2\"></uni-tag>"
+			]
+	},
+	"uIcons": {
+			"prefix": "uicons",
+			"body": [
+					"<uni-icons type=\"$1\"></uni-icons>"
+			]
+	},
+	"uRate": {
+			"prefix": "uRate",
+			"body": [
+					"<uni-rate value=\"$1\"></uni-rate>"
+			]
+	},
+	"uFav": {
+			"prefix": "ufav",
+			"body": [
+					"<uni-fav :checked=\"$1\" @click=\"$2\"></uni-fav>"
+			]
+	},
+	"uProgress": {
+			"prefix": "uprogress",
+			"body": [
+					"<progress percent=\"$1\" show-info$0 />"
+			]
+	},
+	"uNumberBox": {
+			"prefix": "unumberbox",
+			"body": [
+					"<uni-number-box @change=\"$1\"></uni-number-box>"
+			]
+	},
+	"uLoadMore": {
+			"prefix": "uloadmore",
+			"body": [
+					"<uni-load-more :status=\"$1\"></uni-load-more>"
+			]
+	},
+	"uCountDown": {
+			"prefix": "ucountdown",
+			"body": [
+					"<uni-countdown color=\"$1\" background-color=\"$2\" :day=\"$3\" :hour=\"$4\" :minute=\"$5\" :second=\"$6\"></uni-countdown>"
+			]
+	},
+	"uLink": {
+			"prefix": "ulink",
+			"body": [
+					"<uni-link href=\"$1\" text=\"$2\">$3</uni-link>"
+			]
+	},
+	"uTitle": {
+			"prefix": "utitle",
+			"body": [
+					"<uni-title title=\"$1\"></uni-title>"
+			]
+	},
+	"uSection": {
+			"prefix": "usection",
+			"body": [
+					"<uni-section title=\"$1\" sub-title=\"$2\" type=\"$3\">",
+					"\t内容主体，可自定义内容及样式$4",
+					"</uni-section>"
+			]
+	},
+	"uGroup": {
+			"prefix": "ugroup",
+			"body": [
+					"<uni-group title=\"$1\" margin-top=\"$2\">",
+					"\t内容主体，可自定义内容及样式$3",
+					"</uni-group>"
+			]
+	},
+	"uCard": {
+			"prefix": "ucard",
+			"body": [
+					"<uni-card title=\"标题文字\" thumbnail=\"$1\" extra=\"额外信息$2\" note=\"Tips$3\">",
+					"\t内容主体，可自定义内容及样式$4",
+					"</uni-card>"
+			]
+	},
+	"uCalendar": {
+			"prefix": "ucalendar",
+			"body": [
+					"<uni-calendar lunar=\"\" @change=\"$1\"></uni-calendar>"
+			]
+	},
+	"uFab": {
+			"prefix": "ufab",
+			"body": [
+					"<uni-fab @fabClick=\"$6\"></uni-fab>"
+			]
+	},
+	"uPopup": {
+			"prefix": "upopup",
+			"body": [
+					"<uni-popup ref=\"popup\" type=\"top$1\"></uni-popup>"
+			]
+	},
+	"uDrawer": {
+			"prefix": "udrawer",
+			"body": [
+					"<uni-drawer :visible=\"$1\">",
+					"\t<view style=\"padding:30rpx;\">",
+					"\t\t$2",
+					"\t</view>",
+					"</uni-drawer>"
+			]
+	},
+	"uTransition": {
+			"prefix": "utransition",
+			"body": [
+					"<uni-transition :mode-class=\"$1\" :show=\"$2\" />"
+			]
+	},
+	"uList": {
+			"prefix": "ulist",
+			"body": [
+					"<uni-list>",
+					"\t<uni-list-item title=\"$1\" note=\"$2\"></uni-list-item>",
+					"\t<uni-list-item title=\"$3\" note=\"$4\"></uni-list-item>",
+					"</uni-list>"
+			]
+	},
+	"uListFor": {
+			"prefix": "ulistfor",
+			"body": [
+					"<uni-list>",
+					"\t<uni-list-item v-for=\"$1\" :key=\"$2\" title=\"$3\"></uni-list-item>",
+					"</uni-list>"
+			]
+	},
+	"uForms": {
+			"prefix": "uforms",
+			"body": [
+					"<uni-forms ref=\"form\" :rules=\"\">",
+					"\t<uni-forms-item label=\"\" name=\"\">",
+					"\t\t$1",
+					"\t</uni-forms-item>",
+					"</uni-forms>"
+			]
+	},
+	"uFormsItem": {
+			"prefix": "uformsItem",
+			"body": [
+					"<uni-forms-item label=\"\" name=\"\">",
+					"\t$1",
+					"</uni-forms-item>"
+			]
+	},
+	"uField": {
+			"prefix": "ufield",
+			"body": [
+					"<uni-field label=\"$1\" name=\"$2\" v-model=\"$3\" placeholder=\"$4\" />"
+			]
+	},
+	"uFilePicker": {
+			"prefix": "uFilePicker",
+			"body": [
+					"<uni-file-picker v-model=\"$1\" title=\"$2\" limit=\"$3\" file-mediatype=\"$4\"></uni-file-picker>"
+			]
+	},
+	"uGoodsNav": {
+			"prefix": "ugoodsnav",
+			"body": [
+					"<uni-goods-nav :fill=\"$1\" :options=\"$2\" :button-group=\"$3\" @click=\"$4\" @buttonClick=\"$5\" />"
+			]
+	},
+	"uSearchBar": {
+			"prefix": "usearchbar",
+			"body": [
+					"<uni-search-bar @confirm=\"$1\" @input=\"$2\" />"
+			]
+	},
+	"uSteps": {
+			"prefix": "usteps",
+			"body": [
+					"<uni-steps :options=\"$1\" :active=\"0$2\"></uni-steps>"
+			]
+	},
+	"uSwiperDot": {
+			"prefix": "uswiperdot",
+			"body": [
+					"<uni-swiper-dot :info=\"$1\" :current=\"$2\" field=\"$3\" :mode=\"$4\"></uni-swiper-dot>"
+			]
+	},
+	"uTable": {
+			"prefix": "uTable",
+			"body": [
+					"<uni-table stripe emptyText=\"暂无更多数据\">",
+					"\t<uni-tr>",
+					"\t\t<uni-th align=\"center\">$1</uni-th>",
+					"\t</uni-tr>",
+					"\t<uni-tr>",
+					"\t\t<uni-td>$2</uni-td>",
+					"\t</uni-tr>",
+					"</uni-table>"
+			]
+	},
+	"uCollapse": {
+			"prefix": "ucollapse",
+			"body": [
+					"<uni-collapse>",
+					"\t<uni-collapse-item title=\"$2\">",
+					"\t\t内容$3",
+					"\t</uni-collapse-item>",
+					"</uni-collapse>"
+			]
+	},
+	"uSegmentedControl": {
+			"prefix": "usegmentedcontrol",
+			"body": [
+					"<uni-segmented-control :current=\"current$1\" :values=\"$0\" @clickItem=\"$2\"></uni-segmented-control>",
+					"<view class=\"content\">",
+					"\t<view v-show=\"current === 0\">",
+					"\t\t选项卡1的内容",
+					"\t</view>",
+					"\t<view v-show=\"current === 1\">",
+					"\t\t选项卡2的内容",
+					"\t</view>",
+					"\t<view v-show=\"current === 2\">",
+					"\t\t选项卡3的内容",
+					"\t</view>",
+					"</view>"
+			]
+	},
+	"uGrid": {
+			"prefix": "ugrid",
+			"body": [
+					"<uni-grid :column=\"$1\">",
+					"\t<uni-grid-item>$2</uni-grid-item>",
+					"\t<uni-grid-item>$3</uni-grid-item>",
+					"</uni-grid>"
+			]
+	},
+	"uRow": {
+			"prefix": "urow",
+			"body": [
+					"<uni-row$1>",
+					"\t<uni-col$2>$3</uni-col>",
+					"</uni-row>"
+			]
+	},
+	"uCol": {
+			"prefix": "ucol",
+			"body": [
+					"<uni-col$1>$2</uni-col>"
+			]
+	},
+	"uSwipeAction": {
+			"prefix": "uswipeaction",
+			"body": [
+					"<uni-swipe-action>",
+					"\t<uni-swipe-action-item :options=\"$1\" @click=\"$2\"></uni-swipe-action-item>",
+					"</uni-swipe-action>"
+			]
+	},
+	"uRadio": {
+			"prefix": "uradio",
+			"body": [
+					"<label class=\"radio\">",
+					"\t<radio value=\"$1\" /><text>$0</text>",
+					"</label>"
+			]
+	},
+	"uRadioGroup": {
+			"prefix": "uradiogroup",
+			"body": [
+					"<radio-group name=\"$1\">",
+					"\t<label>",
+					"\t\t<radio :value=\"$2\" /><text>$3</text>",
+					"\t</label>",
+					"\t<label>",
+					"\t\t<radio :value=\"$4\" /><text>$5</text>",
+					"\t</label>",
+					"</radio-group>"
+			]
+	},
+	"uCheckbox": {
+			"prefix": "ucheckbox",
+			"body": [
+					"<label>",
+					"\t<checkbox :value=\"$1\" /><text>$0</text>",
+					"</label>"
+			]
+	},
+	"uCheckboxGroup": {
+			"prefix": "ucheckboxgroup",
+			"body": [
+					"<checkbox-group name=\"$1\">",
+					"\t<label>",
+					"\t\t<checkbox :value=\"$2\" /><text>$0</text>",
+					"\t</label>",
+					"</checkbox-group>"
+			]
+	},
+	"uCombox": {
+			"prefix": "ucombox",
+			"body": [
+					"<uni-combox label=\"$1\" :candidates=\"$2\" placeholder=\"$3\" v-model=\"$4\"></uni-combox>"
+			]
+	},
+	"uDateformat": {
+			"prefix": "udateformat",
+			"body": [
+					"<uni-dateformat date=\"$1\" />"
+			]
+	},
+	"uEasyinput": {
+			"prefix": "uEasyinput",
+			"body": [
+					"<uni-easyinput  v-model=\"$1\" placeholder=\"$2\" />"
+			]
+	},
+	"uIndexedList": {
+			"prefix": "uindexedlist",
+			"body": [
+					"<uni-indexed-list :options=\"$1\" :showSelect=\"$1\" @click=\"$1\"></uni-indexed-list>"
+			]
+	},
+	"uPagination": {
+			"prefix": "upagination",
+			"body": [
+					"<uni-pagination title=\"$1\" show-icon=\"$2\" total=\"$3\" current=\"$4\"></uni-pagination>"
+			]
+	},
+	"uniClouddb": {
+			"prefix": "udb",
+			"body": [
+					"<unicloud-db v-slot:default=\"{data, loading, error, options}\" collection=\"$0\">",
+					"\t<view v-if=\"error\">{{error.message}}</view>",
+					"\t<view v-else>",
+					"\t\t",
+					"\t</view>",
+					"</unicloud-db>"
+			]
+	},
+	"view_for": {
+			"prefix": "viewfor",
+			"body": [
+					"<view v-for=\"(item,index) in ${1:data}\" :key=\"index\">",
+					"\t$0",
+					"</view>"
+			],
+			"description": "view带for循环"
+	}
+}

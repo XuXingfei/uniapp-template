@@ -11,16 +11,33 @@ import { getWxShareParams } from '@/uni_modules/x-tools/tools/appletUtils.js';
 
 import uvUI from '@/uni_modules/uv-ui/index.js'
 
+// 开发环境下通过控制台登录
+import '@/common/utils/dev.js'
+
 // Android 上架需要
-import { addPermisionInterceptor, removePermisionInterceptor } from '@/uni_modules/x-perm-apply-instr/js_sdk/index.js'
-addPermisionInterceptor('chooseImage', '为了修改个人头像和发布信息图片视频等, 我们需要申请您设备的相机和存储权限')
-addPermisionInterceptor('chooseVideo', '为了发布信息图片视频等, 我们需要申请您设备的相机和存储权限')
-addPermisionInterceptor('saveImageToPhotosAlbum', '为了保存推广海报到手机相册, 我们需要申请您设备的存储权限')
-addPermisionInterceptor('getLocation', '为了根据您的位置展示信息, 我们需要申请您设备的位置权限')
-addPermisionInterceptor('makePhoneCall', '为了联系客服/用户/咨询等, 我们需要申请您设备的拨打电话权限')
-addPermisionInterceptor('getRecorderManager', '为了使用语言消息功能等, 我们需要申请您设备的麦克风权限')
-addPermisionInterceptor('startLocationUpdate', '为了根据您的位置展示信息, 我们需要申请您设备的位置权限')
-addPermisionInterceptor('scanCode', '为了识别二维码信息, 我们需要申请您设备的相机权限')
+import { createRequestPermissionListener } from '@/uni_modules/x-perm-apply-instr-v2/js_sdk/index.js'
+createRequestPermissionListener()
+
+import { useGlobalStore } from '@/stores/global.js'
+const _showModal = uni.showModal
+uni.showModal = function(options) {
+    if (!options.confirmColor) options.confirmColor = useGlobalStore().containerStyle['--theme-color']
+    return _showModal(options)
+}
+
+import { createNetworkMonitor } from '@/uni_modules/x-network-monitor/js_sdk/index.js'
+
+// 用于处理 Ios App 首次安装无网络问题
+createNetworkMonitor({
+    onRestore: (networkType) => {
+        console.log(`网络已恢复: ${networkType}`);
+        // #ifdef APP
+		// 网络恢复重启 App, 也可以改为重启当前页面使用 uni.redirectTo
+        plus.runtime.restart()
+        // #endif
+    }
+});
+
 
 export function createApp() {
     // #ifdef H5

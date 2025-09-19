@@ -1,28 +1,24 @@
-import {
-    ref,
-    computed
-} from 'vue'
-import {
-    defineStore
-} from 'pinia'
+import { ref, computed } from "vue";
+import { defineStore } from "pinia";
 
-export const useGlobalStore = defineStore('global', () => {
-    const theme = ref('light')
+export const useGlobalStore = defineStore("global", () => {
+    const theme = ref("light");
 
     function setTheme(payload) {
-        theme.value = payload || 'light'
+        theme.value = payload || "light";
+        uni.setStorageSync("theme", payload);
     }
 
-    const containerStyle = ref({})
+    const containerStyle = ref({});
 
     function setContainerStyle(payload) {
-        Object.assign(containerStyle.value, payload)
+        Object.assign(containerStyle.value, payload);
     }
 
-    const loading = ref(false)
+    const loading = ref(false);
 
     function setLoading(payload) {
-        loading.value = payload
+        loading.value = payload;
     }
     return {
         theme,
@@ -31,5 +27,5 @@ export const useGlobalStore = defineStore('global', () => {
         setContainerStyle,
         loading,
         setLoading
-    }
-})
+    };
+});

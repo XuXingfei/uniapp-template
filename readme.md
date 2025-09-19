@@ -13,14 +13,16 @@
 ```bash
 root/
 │
+├─.vscode               # 存放将 HBuilderX 代码片段转换为 VSCode 代码片段 (推荐使用 VSCode 进行开发)
 ├─common                # 公共 js 文件目录
 │  ├─api                # 接口 api 目录
-│  ├─network            # 网络请求和 WebSocket 目录
+│  ├─network            # 网络请求和 WebSocket 目录（请求/响应预处理，登录校验， 错误信息输出等）
 │  ├─utils              # 工具函数目录
 │  ├─config.js          # 项目配置信息文件
 │  └─themeStyle.js      # 项目主题样式文件（样式使用示例: color: var(--theme-color);）
 ├─components            # 公共组件目录（components/组件名称/组件名称.(vue|uvue) 符合这种格式的组件无需引用、注册，可直接在页面中使用）
 │  └─my-container.vue   # 容器组件（该组件应用于每个页面的根元素，如此该页面才能使用 CSS 全局变量和全局 Loading）
+├─docs                  # 项目文档（可删除）
 ├─hooks                 # 公共通用 hook 目录
 │  ├─useCommon.js       # 该 hook 返回一些常用的东西（proxy，gProps：全局属性，userStore，globalStore...）
 │  ├─useCountDown.js    # 倒计时 hook 返回 （countDownInfo：倒计时信息，start：开始倒计时函数，stop：结束倒计时函数）
@@ -45,13 +47,24 @@ root/
 ├─stores                # Pinia 状态管理
 │  ├─global.js          # 公用状态
 │  └─user.js            # 用户状态
-├─uni_modules           # 存放uni_module 
+├─uni_modules           # 存放uni_module
 │  ├─flower-icons       # IconPark https://iconpark.oceanengine.com/official 在该网站复制 Vue 代码即可使用
 │  ├─flower-svg         # IconPark 依赖
 │  ├─uv-ui              # uv-ui 组件库 https://www.uvui.cn/components/intro.html
+│  ├─x-cacheFile        # 文件缓存 https://ext.dcloud.net.cn/plugin?id=24221
+│  ├─x-container        # 容器组件 https://ext.dcloud.net.cn/plugin?id=20907
+│  ├─x-fade-in-top      # 顶部淡入效果组件 https://ext.dcloud.net.cn/plugin?id=20909
+│  ├─x-filter-bg        # 虚化背景组件 https://ext.dcloud.net.cn/plugin?id=20956
+│  ├─x-fixed-footer     # 固定底部组件 https://ext.dcloud.net.cn/plugin?id=20927
+│  ├─x-fixed-header     # 固定顶部组件 https://ext.dcloud.net.cn/plugin?id=20928
 │  ├─x-loading          # 全屏 loading 组件 https://ext.dcloud.net.cn/plugin?id=17704
+│  ├─x-nav-bar          # 自定义 navBar 组件 https://ext.dcloud.net.cn/plugin?id=20941
 │  ├─x-network          # 网络请求和 WebSocket 库 https://ext.dcloud.net.cn/plugin?id=15928
-│  ├─x-perm-apply-instr # Android 上架说明申请权限目录插件 https://ext.dcloud.net.cn/plugin?id=15897
+│  ├─x-network-monitor  # 网络状态监听（用于处理 Ios App 首次安装无网络问题）https://ext.dcloud.net.cn/plugin?id=25089
+│  ├─x-perm-apply-instr-v2 # Android 上架说明申请权限目录插件 https://ext.dcloud.net.cn/plugin?id=22585
+│  ├─x-placeholder      # 顶部或底部占位组件 https://ext.dcloud.net.cn/plugin?id=20959
+│  ├─x-styles           # 公共样式
+│  ├─x-tools            # 各端常用工具函数 https://ext.dcloud.net.cn/plugin?id=20898
 │  └─x-utils            # 布局组件，公共样式，各端常用工具函数以及路由跳转简单封装
 ├─unpackage             # 非工程代码，一般存放运行或发行的编译结果
 ├─.gitignore            # Git忽略文件

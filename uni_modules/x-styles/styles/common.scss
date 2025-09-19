@@ -1,0 +1,234 @@
+//
+
+$borderColor: #F2F2F2;
+
+$colors: (
+  'primary': #1e88e5, // 根据项目修改
+  'success': #4caf50,
+  'warning': #ffc107,
+  'danger': #f44336,
+  'light': #f5f5f5,
+  'dark': #212121,
+  'gray': #9e9e9e,
+  'grey': #9e9e9e,
+  'white': #fff,
+  'black': #000
+);
+
+.round{
+    border-radius: 50%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.border-none {
+  border: none;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.hidden {
+  display: none;
+}
+
+.border {
+  border: 1px solid $borderColor;
+}
+
+.line {
+  width: 100%;
+  border-bottom: 1px solid $borderColor;
+}
+
+.line-ellipsis-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  /* #ifndef APP-PLUS */
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  /* #endif */
+
+  &::after {
+    display: none;
+  }
+}
+
+.uni-page-refresh {
+  z-index: 99999;
+}
+
+
+
+
+
+@each $name, $color in $colors {
+  // 生成背景色类
+  .bg-#{$name} {
+    background-color: $color;
+  }
+  
+  // 生成文字颜色类
+  .text-#{$name} {
+    color: $color;
+  }
+}
+
+
+@each $d in top, right, bottom, left {
+  .border-#{$d} {
+    border-#{$d}: 1px solid $borderColor;
+  }
+}
+
+// 文字省略
+@for $i from 2 through 10 {
+  .line-ellipsis-#{$i} {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $i;
+  }
+}
+
+// 内外边距 圆角
+@for $i from 0 through 375 {
+  @if $i % 5 == 0 or $i % 2 == 0 or $i == 375 {
+    // 外边距
+    .m-#{$i} {
+      margin: #{$i}rpx;
+    }
+
+    // 内边距
+    .p-#{$i} {
+      padding: #{$i}rpx;
+    }
+    
+    // 圆角
+    .radius-#{$i} {
+      border-radius: #{$i}rpx;
+    }
+  }
+}
+
+// 内外边距 圆角
+@for $i from 0 through 50 {
+  @for $j from 0 through 50 {
+    @if ($i % 5 == 0 or $i % 2 == 0) and ($j % 5 == 0 or $j % 2 == 0) and $i != $j {
+      // 外边距
+      .m-#{$i}-#{$j} {
+        margin: #{$i}rpx #{$j}rpx;
+      }
+
+      // 内边距
+      .p-#{$i}-#{$j} {
+        padding: #{$i}rpx #{$j}rpx;
+      }
+    }
+  }
+
+  @if $i % 5 == 0 or $i % 2 == 0 {
+    // 外边距
+    .m-#{$i}-auto {
+      width: fit-content;
+      margin: #{$i}rpx auto;
+    }
+  }
+}
+
+// 内外边距 圆角
+@for $i from 0 through 375 {
+  @if $i % 5 == 0 or $i % 2 == 0 or $i == 375 {
+    // 外边距
+    .mt-#{$i} {
+      margin-top: #{$i}rpx;
+    }
+
+    .mr-#{$i} {
+      margin-right: #{$i}rpx;
+    }
+
+    .mb-#{$i} {
+      margin-bottom: #{$i}rpx;
+    }
+
+    .ml-#{$i} {
+      margin-left: #{$i}rpx;
+    }
+
+    // 内边距
+    .pt-#{$i} {
+      padding-top: #{$i}rpx;
+    }
+
+    .pr-#{$i} {
+      padding-right: #{$i}rpx;
+    }
+
+    .pb-#{$i} {
+      padding-bottom: #{$i}rpx;
+    }
+
+    .pl-#{$i} {
+      padding-left: #{$i}rpx;
+    }
+  }
+}
+
+// 字号
+@for $i from 0 through 100 {
+  @if $i % 2 == 0 {
+    .fs-#{$i} {
+      font-size: #{$i}rpx;
+    }
+  }
+}
+
+// 宽高
+@for $i from 0 through 750 {
+  @if $i % 2 == 0 {
+    .size-#{$i} {
+      width: #{$i}rpx;
+      height: #{$i}rpx;
+    }
+
+    .w-#{$i} {
+      width: #{$i}rpx;
+    }
+
+    .h-#{$i} {
+      height: #{$i}rpx;
+    }
+  }
+}
+
+@for $i from 0 through 100 {
+    @if $i % 5 == 0 {
+      .size-#{$i}p {
+        width: #{$i} + unquote("%");
+        height: #{$i} + unquote("%");
+      }
+    
+      .w-#{$i}p {
+        width: #{$i} + unquote("%");
+      }
+    
+      .h-#{$i}p {
+        height: #{$i} + unquote("%");
+      }
+    }
+}

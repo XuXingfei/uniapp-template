@@ -103,9 +103,10 @@ export const toCustomerService = (corpId, url) => {
     // #endif
 }
 
-// 保存网络图片
+// 保存图片
 export const saveImage = async (url, tips = true) => {
     try {
+        console.log('saveImage', url);
         // #ifdef H5
 
         const link = document.createElement('a');
@@ -119,16 +120,23 @@ export const saveImage = async (url, tips = true) => {
 
         // #ifndef H5
 
-        const { statusCode, tempFilePath: filePath } = await uni.downloadFile({
-            url
-        })
-
-        if (statusCode == 200) {
-            await uni.saveImageToPhotosAlbum({
-                filePath
+        if (url.startsWith('http')) {
+            const { statusCode, tempFilePath: filePath } = await uni.downloadFile({
+                url
             })
+
+            if (statusCode == 200) {
+                await uni.saveImageToPhotosAlbum({
+                    filePath
+                })
+            } else {
+                throw Error('图片下载失败')
+            }
+
         } else {
-            throw Error('图片下载失败')
+            await uni.saveImageToPhotosAlbum({
+                filePath: url
+            })
         }
 
         // #endif
@@ -146,7 +154,6 @@ export const saveImage = async (url, tips = true) => {
         })
     }
 }
-
 // 获取页面通信管道（支持 vue2 需绑定this）
 export const pageEvent = function() {
     // #ifdef VUE2

@@ -58,7 +58,8 @@
             rePassword: '请填写确认密码'
         }
 
-        const key = gProps.hasEmptyField(form)
+        const key = gProps.$hasEmptyField(form)
+		console.log('key', key);
         if (key) return gProps.$toast(tipMap[key])
 
         if (form.password != form.rePassword) return gProps.$toast('两次密码不一致')

@@ -25,11 +25,10 @@
         },
         computed: {
             innerStyle() {
-                const { isTop, height, bgColor, sysInfo } = this
+                const { isTop, height, sysInfo } = this
                 return {
                     width: '1px',
-                    height: str2px(height) + (isTop ? sysInfo.statusBarHeight : sysInfo.safeAreaInsets.bottom) + 'px',
-                    background: bgColor
+                    height: str2px(height) + (isTop ? sysInfo.statusBarHeight : sysInfo.safeAreaInsets.bottom) + 'px'
                 }
             },
         },

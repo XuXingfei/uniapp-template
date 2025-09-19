@@ -1,34 +1,16 @@
 <template>
-    <x-nav-bar>
-        <text>{{ title }}</text>
-    </x-nav-bar>
-    <web-view :src="url" :webview-styles="webviewStyles"></web-view>
+    <web-view :src="query.url" :webview-styles="webviewStyles"></web-view>
 </template>
 
 <script setup>
     import { ref, reactive } from 'vue'
-    import { onLoad, onShow, onReady } from '@dcloudio/uni-app'
-    import { useCommon } from '@/hooks/useCommon.js'
-    import {} from '@/common/api/index.js'
+    import { onLoad } from '@dcloudio/uni-app'
 
-    const { gProps, userStore, globalStore } = useCommon()
+    const query = reactive({});
 
-    const title = ref('')
-    const url = ref('')
-
-    const { statusBarHeight } = uni.getSystemInfoSync()
-    const navbarHeight = statusBarHeight + 44
-    const webviewStyles = {
-        top: navbarHeight + 'px',
-        bottom: 0
-    }
+    const webviewStyles = {}
 
     onLoad((e) => {
-        title.value = e.title || '外部链接'
-        url.value = e.url || 'http://www.baidu.com'
+        Object.assign(query, e)
     })
 </script>
-
-<style lang="scss" scoped>
-    .container {}
-</style>

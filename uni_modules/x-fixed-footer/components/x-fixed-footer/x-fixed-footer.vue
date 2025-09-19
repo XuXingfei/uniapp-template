@@ -1,8 +1,8 @@
-<template>
+ <template>
     <view class="x-fixed-footer" :style="{width, height: (str2px(height) || containerHeight) + 'px'}">
         <view class="fixed-footer-container" :style="[innerStyle, customStyle]">
             <slot></slot>
-            <x-placeholder v-if="safeArea"></x-placeholder>
+            <x-placeholder v-if="safeArea" :is-top="false"></x-placeholder>
         </view>
     </view>
 </template>

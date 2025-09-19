@@ -1,3 +1,5 @@
+import { deepClone } from './index.js'
+
 const delayCall = (fun, timeout) => {
     if (timeout) setTimeout(fun, timeout)
     else fun()
@@ -25,7 +27,7 @@ export const navToAndEvent = (url, data, acceptCallback, timeout = 0) => {
                 },
                 success: ({ eventChannel }) => {
                     if (eventChannel && eventChannel.emit) {
-                        eventChannel.emit('navData', data)
+                        eventChannel.emit('navData', deepClone(data))
                     }
                 },
                 fail: console.log,
