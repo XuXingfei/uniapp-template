@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as e,af as n}from"./chunks/framework.DOCLS9hV.js";const o=JSON.parse('{"title":"项目文档","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),l={name:"README.md"};function t(h,a,p,r,d,k){return e(),i("div",null,[...a[0]||(a[0]=[n("",10)])])}const g=s(l,[["render",t]]);export{o as __pageData,g as default};
