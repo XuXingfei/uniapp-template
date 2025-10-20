@@ -1,4 +1,4 @@
-## [项目文档](https://xuxingfei.github.io/uniapp-template)
+## [模版文档](https://xuxingfei.github.io/uniapp-template)
 
 ### uni-app项目开发基础模版（Vue3）
 

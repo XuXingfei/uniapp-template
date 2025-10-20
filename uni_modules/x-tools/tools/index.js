@@ -48,12 +48,16 @@ export const _typeof = val => Object.prototype.toString.call(val).slice(8, -1).t
 // 休眠
 export const sleep = ms => new Promise(r => setTimeout(r, ms))
 
+// 获取当前页面信息
+export const getCurrentPage = () => {
+    const pages = getCurrentPages()
+    return pages[pages.length - 1] || {}
+}
+
 // 获取当前页面 path
 export const getCurrentPagePath = (fullPath = false) => {
-    const pages = getCurrentPages()
-    if (pages.length === 0) return ''
-    const { route, page } = pages[pages.length - 1]
-    return fullPath ? page.fullPath : '/' + route
+    const { route, $page } = getCurrentPage()
+    return fullPath ? $page.fullPath : '/' + route
 }
 
 // 判断当前页或指定 path 是否是 tabbar 页面
@@ -79,10 +83,11 @@ export const getPageInfo = () => {
     // tabBar
     const tabBarList = pagesJson.tabBar?.list || []
 
-    // 当前页
+    // 首页
     const [page] = pages
 
     return {
+        currentPage: pages[pages.length - 1] || {},
         startPage,
         isSharePage: pages.length == 1 && page.route != startPage && !tabBarList.some(i => i.pagePath == page.route),
         pageStackLen: pages.length,

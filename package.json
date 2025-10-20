@@ -1,6 +1,6 @@
 {
   "name": "uni_template",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "项目开发基础模版（Vue3），集成 --> 常用组件库，网络请求 Promise 风格，WebSocket 消息收发、心跳、重连，CSS 变量主题方案，自定义全局 Loading，各端实用工具函数",
   "main": "main.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "项目模版",
     "开发模版",
     "Vue3模版"
-  ],
+],
   "author": "Xingfei Xu <1824159241@qq.com>",
   "license": "MIT",
   "id": "x-template",
@@ -65,6 +65,6 @@
   },
   "devDependencies": {
     "vite": "^7.1.5",
-    "vitepress": "^1.6.3"
+    "vitepress": "^2.0.0-alpha.12"
   }
 }

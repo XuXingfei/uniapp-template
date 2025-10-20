@@ -39,9 +39,7 @@
 - [网络状态监听](https://ext.dcloud.net.cn/plugin?id=25089) - 用于处理 iOS App 首次安装无网络问题
 - [Android 上架说明申请权限目录插件](https://ext.dcloud.net.cn/plugin?id=22585) - Android 应用上架所需的权限说明
 - [顶部或底部占位组件](https://ext.dcloud.net.cn/plugin?id=20959) - 用于顶部或底部占位的组件
-- [公共样式](https://ext.dcloud.net.cn/plugin?id=20959) - 项目公共样式文件
 - [各端常用工具函数](https://ext.dcloud.net.cn/plugin?id=20898) - 提供多端兼容的工具函数
-- [布局组件，公共样式，各端常用工具函数以及路由跳转简单封装](https://ext.dcloud.net.cn/plugin?id=20898) - 项目基础工具和组件
 
 ## 贡献指南
 

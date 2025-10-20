@@ -1,83 +1,60 @@
 # 网络请求使用指南
 
-本项目封装了基于 Promise 风格的网络请求库，支持拦截器、统一 Loading 处理等功能。
+模板基于 `uni.request` 封装了 Promise 风格的网络层，默认集成请求/响应拦截、统一 Loading、错误提示与文件上传能力。
 
 ## 基础配置
 
-网络请求的基础配置在 `common/config.js` 中定义：
+所有网络相关配置集中在 `common/config.js`：
 
 ```javascript
-// common/config.js
 export const baseUrl = 'https://api.example.com' // 基础 URL
-export const requestTimeout = 10000 // 请求超时时间（毫秒）
-export const uploadTimeout = 30000 // 上传超时时间（毫秒）
+export const requestTimeout = 10000 // 普通请求超时（毫秒）
+export const uploadTimeout = 30000 // 上传超时（毫秒）
 ```
 
-## 请求封装
+根据环境修改 `domain`、`protocolSecure` 等变量即可影响 `baseUrl`、`staticBaseUrl`、`socketUrl` 等派生配置。
 
-网络请求封装在 `common/network/http.js` 中，基于 uni-app 的 `uni.request` API。
+## 请求实例
 
-### 请求实例
-
-项目导出了两个请求实例：
+`common/network/http.js` 暴露两类实例：
 
 ```javascript
-// common/network/http.js
-export const http = new Request({ /* 配置 */ }) // 普通请求实例
-export const uploadFile = new UploadFile({ /* 配置 */ }) // 文件上传实例
+export const http = new Request({ /* 配置 */ })       // 普通请求
+export const uploadFile = new UploadFile({ /* 配置 */ }) // 文件上传
 ```
 
-## 基本使用
+在业务代码中可直接导入 `http` 发起请求。
+
+## 基本用法
 
 ### GET 请求
 
 ```javascript
 import { http } from '@/common/network/http.js'
 
-// 基本 GET 请求
 const getUserInfo = async () => {
-  try {
-    const userInfo = await http.get('/api/user/info')
-    console.log('用户信息:', userInfo)
-  } catch (error) {
-    console.error('请求失败:', error)
-  }
+  const userInfo = await http.get('/api/user/info')
+  console.log('用户信息', userInfo)
 }
 
-// 带参数的 GET 请求
 const getUserList = async (page, size) => {
-  try {
-    const params = { page, size }
-    const userList = await http.get('/api/user/list', params)
-    console.log('用户列表:', userList)
-  } catch (error) {
-    console.error('请求失败:', error)
-  }
+  const params = { page, size }
+  const list = await http.get('/api/user/list', params)
+  console.log(list)
 }
 ```
 
 ### POST 请求
 
 ```javascript
-// 基本 POST 请求
-const createUser = async (userData) => {
-  try {
-    const result = await http.post('/api/user/create', userData)
-    console.log('创建成功:', result)
-  } catch (error) {
-    console.error('创建失败:', error)
-  }
+const createUser = async (payload) => {
+  const res = await http.post('/api/user/create', payload)
+  console.log('创建成功', res)
 }
 
-// 带请求头的 POST 请求
-const login = async (loginData) => {
-  try {
-    const headers = { 'Custom-Header': 'value' }
-    const result = await http.post('/api/auth/login', loginData, headers)
-    console.log('登录成功:', result)
-  } catch (error) {
-    console.error('登录失败:', error)
-  }
+const login = async (payload) => {
+  const headers = { 'Custom-Header': 'value' }
+  return http.post('/api/auth/login', payload, headers)
 }
 ```
 
@@ -86,146 +63,51 @@ const login = async (loginData) => {
 ```javascript
 import { uploadFile } from '@/common/network/http.js'
 
-// 上传文件
 const uploadAvatar = async (filePath) => {
-  try {
-    const result = await uploadFile.uploadFile(filePath)
-    console.log('上传成功:', result)
-  } catch (error) {
-    console.error('上传失败:', error)
-  }
+  const result = await uploadFile.uploadFile(filePath)
+  console.log('上传成功', result)
 }
 ```
 
 ## 拦截器
 
-### 请求拦截器
+### 请求拦截
 
-请求拦截器在 `common/network/http.js` 中定义：
+`requestInterceptor` 会在请求发出前执行：
 
-```javascript
-const requestInterceptor = async function(options) {
-  // 添加 token
-  options.header['token'] = uni.getStorageSync('token')
+- 自动附加本地 `token` 到请求头。
+- 根据 `excludeLoadingUrl` 判断是否展示全局 Loading。
+- 在上传场景下校验文件大小（使用 `fileLimit`）。
+- 对参数执行 `paramsFilter`，将 `null/undefined` 统一置空、数组转字符串等。
 
-  // 文件大小限制
-  if (options.filePath) fileLimit(options)
+### 响应拦截
 
-  // 参数过滤
-  if (options.data) paramsFilter(options.data, options)
+`responseInterceptor` 在请求完成后执行：
 
-  // 显示 loading
-  if (!excludeLoadingUrl.includes(options.url.replace(baseUrl, ''))) {
-    const { setLoading } = useGlobalStore()
-    setLoading(true)
-    requestLoadingCount++
-  }
-}
-```
+- 打印请求/响应日志，便于调试。
+- 关闭对应的全局 Loading。
+- 将成功响应的 `data` 字段交给 `dataFactory` 处理，再返回业务数据。
+- 对业务错误弹出 `uni.showToast`，并返回 `Promise.reject`。
+- 对网络错误统一提示 "Server error"，保留详细错误日志。
 
-### 响应拦截器
+## 内置拦截行为
 
-响应拦截器处理返回数据和错误：
+`common/network/utils.js` 中还实现了额外的默认逻辑：
 
-```javascript
-const responseInterceptor = async function(res) {
-  const { reqConf, err } = res
+- **登录过期自动处理**：收到 `401/402/403` 时会清空 token，触发登录提示，避免在登录页重复弹窗。
+- **文件大小限制**：图片默认 0.5 MB、视频 20 MB，超出限制会抛出错误信息，可通过捕获异常自定义提示。
+- **Loading 白名单**：将无需 Loading 的接口加入 `excludeLoadingUrl`，可减少频繁请求造成的闪屏。
 
-  // 隐藏 loading
-  if (!excludeLoadingUrl.includes(reqConf.url.replace(baseUrl, ''))) {
-    requestLoadingCount--
-    if (!requestLoadingCount) {
-      const { setLoading } = useGlobalStore()
-      setLoading(false)
-    }
-  }
-
-  if (res.statusCode == 200) {
-    // 处理成功响应
-    if (res.data.code == 200) {
-      dataFactory(res.data.data)
-      return res.data.data
-    } else {
-      // 处理业务错误
-      logReqErr(res)
-      uni.showToast({
-        icon: "none",
-        title: res.data.msg || res.data.message || `Error code ${res.data.code || 'none'}`,
-        duration: 2000,
-      })
-      return Promise.reject(res)
-    }
-  } else {
-    // 处理网络错误
-    logReqErr(res)
-    uni.showToast({
-      icon: "none",
-      title: "Server error",
-      duration: 2000,
-    })
-    return Promise.reject(res)
-  }
-}
-```
-
-## 统一 Loading 处理
-
-项目实现了统一的 Loading 处理机制：
-
-```javascript
-// 在 global store 中管理 loading 状态
-const excludeLoadingUrl = ['/api/xxx'] // 不显示 loading 的 url
-let requestLoadingCount = 0
-
-// 显示 loading
-if (!excludeLoadingUrl.includes(options.url.replace(baseUrl, ''))) {
-  const { setLoading } = useGlobalStore()
-  setLoading(true)
-  requestLoadingCount++
-}
-
-// 隐藏 loading
-if (!excludeLoadingUrl.includes(reqConf.url.replace(baseUrl, ''))) {
-  requestLoadingCount--
-  if (!requestLoadingCount) {
-    const { setLoading } = useGlobalStore()
-    setLoading(false)
-  }
-}
-```
+如需调整，可根据项目需求修改对应函数。
 
 ## 错误处理
 
-### 网络错误
-
-网络错误会统一提示"Server error"：
-
-```javascript
-uni.showToast({
-  icon: "none",
-  title: "Server error",
-  duration: 2000,
-})
-```
-
-### 业务错误
-
-业务错误会显示后端返回的错误信息：
-
-```javascript
-uni.showToast({
-  icon: "none",
-  title: res.data.msg || res.data.message || `Error code ${res.data.code || 'none'}`,
-  duration: 2000,
-})
-```
+- **网络错误**：统一提示 "Server error"，同时在控制台输出请求/响应体便于排查。
+- **业务错误**：根据后端返回的 `msg` 或 `message` 提示用户，可在业务层通过 `try/catch` 获取详细信息。
 
 ## 最佳实践
 
-1. **统一入口**：所有网络请求都通过封装的 http 实例发起
-2. **错误处理**：在业务代码中正确处理 Promise 的 reject 情况
-3. **参数校验**：发送请求前对参数进行必要的校验
-4. **Loading 控制**：对于不需要显示 Loading 的接口，添加到 excludeLoadingUrl 数组中
-5. **请求日志**：开发环境下会输出详细的请求日志，便于调试
-
-通过合理使用网络请求封装，可以提升代码的可维护性和用户体验。
+1. **统一入口**：所有接口集中通过 `http` 发起，便于全局维护。
+2. **善用拦截器**：在 `excludeLoadingUrl`、`paramsFilter` 中加入业务约束，减少重复代码。
+3. **错误兜底**：业务层应捕获 `Promise.reject`，针对不同错误码给出更友好的处理。
+4. **上传策略**：上传大文件前提示用户大小限制，必要时在前端自行压缩或分片。

@@ -84,13 +84,29 @@ function sleep(ms) {
  */
 function withTimeout(asyncFn, timeoutMs) {
     return new Promise((resolve, reject) => {
+        let isResolved = false;
+
         const timer = setTimeout(() => {
-            reject(new Error(`Operation timed out after ${timeoutMs}ms`));
+            if (!isResolved) {
+                isResolved = true;
+                reject(new Error(`Operation timed out after ${timeoutMs}ms`));
+            }
         }, timeoutMs);
 
         asyncFn()
-            .then(resolve)
-            .catch(reject)
-            .finally(() => clearTimeout(timer));
+            .then(result => {
+                if (!isResolved) {
+                    isResolved = true;
+                    clearTimeout(timer);
+                    resolve(result);
+                }
+            })
+            .catch(error => {
+                if (!isResolved) {
+                    isResolved = true;
+                    clearTimeout(timer);
+                    reject(error);
+                }
+            });
     });
 }
