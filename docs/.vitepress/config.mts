@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Uni-App Vue3 模版文档',
   description: '基于 uv-ui、IconPark 的 uni-app Vue3 模版',
-  base: '/',
+  base: "/uniapp-template/",
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
